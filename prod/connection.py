@@ -1,8 +1,8 @@
-import pandas as pd
-import getpass
-from sqlalchemy import create_engine, exc
-from sshtunnel import SSHTunnelForwarder, BaseSSHTunnelForwarderError
+# Import necessary modules from library...
+from library import getpass, create_engine, exc, SSHTunnelForwarder, BaseSSHTunnelForwarderError, pd
 
+
+# Set up tunnel connection to prod with querying functions...
 CONNECTION_SETTINGS = {
     'read_only_prod': {
         'ssh_host': 'bastion.jooraccess.com',
