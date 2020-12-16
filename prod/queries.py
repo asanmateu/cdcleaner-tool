@@ -12,10 +12,15 @@ def query_sales_reps(designer_id):
     # Prepare query with f-string to insert designer id and close as string...
     query = f"select id, code, display_name from joor_web.accounts_users where account_id = {designer_id};"
 
-    # Call prod and run query saving it as a pandas DataFrame called sales_reps...
+    # Make the query...
     sales_reps = query_read_only_prod(query)
 
-    return sales_reps
+    # Extract unique values...
+    sales_rep_names = set(sales_reps['display_name'])
+    sales_rep_codes = set(sales_reps['code'])
+
+    # Return a series for names and one for codes...
+    return sales_rep_names, sales_rep_codes
 
 
 def query_price_types(designer_id):
@@ -35,7 +40,7 @@ def query_price_types(designer_id):
     return price_types
 
 
-def query_payment_methods(designer_id):
+def query_payment_methods(designer_id: int):
     """ Take designer id and call prod to make a query that retrieves active payment methods
     for the specific designer id.
 
@@ -43,13 +48,22 @@ def query_payment_methods(designer_id):
         pandas DataFrame with desired columns.
 
    """
-    query = f"select dpm.code, pm.payment_name, pm.code from joor_web.designer_payment_methods dpm " \
-            f"join joor_web.payment_methods pm on pm.id = dpm.payment_method_id" \
-            f"where dpm.designer_id = {designer_id} and dpm.deleted = 0;"
+    query = f'select dpm.code, pm.payment_name from joor_web.designer_payment_methods dpm join' \
+            f' joor_web.payment_methods pm on pm.id = dpm.payment_method_id where ' \
+            f'dpm.designer_id = {designer_id} and dpm.deleted = 0;'
 
+    # Extract DataFrame with designer's active payment methods...
     payment_methods = query_read_only_prod(query)
 
-    return payment_methods
+    # Divide duplicates and unique values into dictionaries to ease validation...
+    duplicate_payment_methods = payment_methods[payment_methods.duplicated(subset=['code', 'payment_name'], keep=False)]
+    duplicate_payment_dict = dict(zip(duplicate_payment_methods['payment_name'], duplicate_payment_methods['code']))
+
+    unique_payment_methods = payment_methods.drop_duplicates(subset=['code', 'payment_name'])
+    unique_payment_dict = dict(zip(unique_payment_methods['payment_name'], unique_payment_methods['code']))
+
+    # Return dataframe with data from call to prod by running query...
+    return duplicate_payment_dict, unique_payment_dict
 
 
 def query_shipping_methods(designer_id):
@@ -60,10 +74,20 @@ def query_shipping_methods(designer_id):
        panda DataFrame with desired columns.
 
    """
-    query = f"select dsm.code, sm.shipping_name, sm.code from joor_web.designer_shipping_methods dsm " \
+
+    query = f"select dsm.code, sm.shipping_name from joor_web.designer_shipping_methods dsm " \
             f"join joor_web.shipping_methods sm on sm.id = dsm.shipping_method_id where " \
             f"dsm.designer_id = {designer_id} and dpm.deleted = 0;"
 
+    # Extract DataFrame with designer's active payment methods...
     shipping_methods = query_read_only_prod(query)
 
-    return shipping_methods
+    # Divide duplicates and unique values into dictionaries to ease validation...
+    duplicate_shipping_methods = shipping_methods[shipping_methods.duplicated(subset=['code', 'shipping_name'], keep=False)]
+    duplicate_shipping_dict = dict(zip(duplicate_shipping_methods['shipping_name'], duplicate_shipping_methods['code']))
+
+    unique_shipping_methods = shipping_methods.drop_duplicates(subset=['code', 'shipping_name'])
+    unique_shipping_dict = dict(zip(unique_shipping_methods['shipping_name'], unique_shipping_methods['code']))
+
+    # Return dataframe with data from call to prod by running query...
+    return duplicate_shipping_dict, unique_shipping_dict
