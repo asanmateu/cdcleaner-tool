@@ -1,6 +1,7 @@
 # Import necessary modules...
 from library import re
 from errors import ERROR_TYPE
+from alerts import ALERT_TYPE
 
 
 def email_cleaner(data):
@@ -19,8 +20,10 @@ def email_cleaner(data):
             # Make sure split works if there is a ; too...
             if emails[0].count(',') >= 1:
                 emails = re.split(r", ", emails[0])
-            else:
+            elif emails[0].count(';') >= 1:
                 emails = re.split(r"; ", emails[0])
+            else:
+                emails = re.split(r" ", emails[0])
 
             # Trim whitespaces to clean emails format...
             v_emails = [e.strip(" ") for e in emails]
@@ -45,7 +48,6 @@ def email_cleaner(data):
                 data['Additional Emails'].iloc[i] = ad_emails
 
         else:
-            # Should we note an alert for empty email address field?
-            pass
+            data['ALERT'].iloc[i] = str(data['ALERT'].iloc[i]) + ALERT_TYPE['email_missing']
 
     return data
