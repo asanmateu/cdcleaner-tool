@@ -18,10 +18,10 @@ CONNECTION_SETTINGS = {
         'db_default': 'joor_dev'},
     'user': {
         'name': getpass.getuser(),
-        'ssh_username': 'asanmateu',
+        'ssh_username': '',
         'ssh_password': '',
-        'db_username': 'human_ro_asanmateu',
-        'db_password': 'wyUhzpUw3ZCyoEkDEdtv',
+        'db_username': '',
+        'db_password': '',
         'credentials_set': False}
 }
 
