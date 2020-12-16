@@ -11,10 +11,14 @@ The script features a range of functions with different functionality launched f
 
 1. Make sure you have docker installed: https://github.com/joor/dev/blob/master/README.md
 
-2. Input files must be dropped inside the `files/input` directory in `.xlsx` format.
+2. Request your credential to access `prod_ro`.
 
-3. Once the script has run the `clean file` and the `results file` will be found inside `file/output` directory.
+3. Input files must be dropped inside the `files/input` directory in `.xlsx` format.
 
-4. Process `clean file` connections.
+4. .... Explain how to run it / enter `designer_id` through command etc...
 
-5. Send `results file` to CSM team.
+5. Once the script has run the `clean file` and the `results file` will be found inside `file/output` directory.
+
+6. Process `clean file` connections.
+
+7. Send `results file` to CSM team.
