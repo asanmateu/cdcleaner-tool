@@ -1,4 +1,4 @@
-#CD Cleaner
+# CD Cleaner
 
 This script is made to be run from docker, therefore, make sure you have
 downloaded and configured docker (more on installing docker:
