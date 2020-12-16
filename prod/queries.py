@@ -2,7 +2,7 @@
 from connection import query_read_only_prod
 
 
-def query_sales_reps(designer_id):
+def query_sales_reps(designer_id: int):
     """ Take designer id and call prod to make a query that retrieves account users
     for the specific designer id.
 
@@ -23,7 +23,7 @@ def query_sales_reps(designer_id):
     return sales_rep_names, sales_rep_codes
 
 
-def query_price_types(designer_id):
+def query_price_types(designer_id: int):
     """ Take designer id and call prod to make a query that retrieves active price types
     for the specific designer id.
 
@@ -66,7 +66,7 @@ def query_payment_methods(designer_id: int):
     return duplicate_payment_dict, unique_payment_dict
 
 
-def query_shipping_methods(designer_id):
+def query_shipping_methods(designer_id: int):
     """ Take designer id and call prod to make a query that retrieves active shipping methods
     for the specific designer id.
 
