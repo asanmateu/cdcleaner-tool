@@ -9,8 +9,6 @@ def city_cleaner(data):
         # Note error if value is empty otherwise leave as it is...
         if data['City'].iloc[i] == '':
             data['ERROR'].iloc[i] = str(data['ERROR'].iloc[i]) + ERROR_TYPE['city_error']
-        else:
-            pass
 
     return data
 

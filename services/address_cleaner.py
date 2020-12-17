@@ -10,26 +10,13 @@ def address_type_cleaner(data):
         Run before doing any other work on addresses. Make sure store_cleaner has been run.
     """
 
-    # Formatting data for lookups...
-    d_addtypes = data['Address Type'].astype(str)
-    d_addtypes = list(d_addtypes.map(lambda x: x.lower()))
-
-    # Empty list for validated values...
-    c_addtypes = []
-
     # # Iterate over input address type list and populate empty list with clean values ...
     for i in range(0, len(data['Address Type'])):
-        if d_addtypes[i] in valid_types.keys():
-            # Append valid address type format to raw_clean...
-            c_addtypes.append(valid_types[d_addtypes[i]])
-
-        else:
-            # Leave invalid address type and note error for ommit generator...
-            c_addtypes.append(d_addtypes[i])
+        reference_address_type = data['Address Type'].iloc[i].lower()
+        if reference_address_type not in valid_types.keys():
             data['ERROR'].iloc[i] = str(data['ERROR'].iloc[i]) + ERROR_TYPE['address_type_error']
-
-    # Substitute valid values into original address type column...
-    data['Address Type'] = c_addtypes
+        else:
+            data['Address Type'].iloc[i] = valid_types[reference_address_type]
 
     return data
 
@@ -41,8 +28,6 @@ def address_cleaner(data):
     for i in range(0, len(data['Address 1'])):
         if data['Address 1'].iloc[i] == "":
             data['ERROR'].iloc[i] = str(data['ERROR'].iloc[i]) + ERROR_TYPE['address_error']
-        else:
-            pass
 
     return data
 
