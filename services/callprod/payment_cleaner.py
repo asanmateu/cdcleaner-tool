@@ -28,5 +28,6 @@ def payment_methods_cleaner(data):
         else:
             data['ALERT'].iloc[i] = str(data['ALERT'].iloc[i]) + ALERT_TYPE["payment_method_duplicate"]
             data['Payment Method'].iloc[i] = ""
+            data['Payment Code'].iloc[i] = ""
 
     return data
