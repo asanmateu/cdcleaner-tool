@@ -16,11 +16,9 @@ def sales_rep_cleaner(data):
 
     # Iterate and clean sales reps while making alert note for those that don't exist...
     for i in range(0, len(data['Sales Rep'])):
-        if data['Sales Rep'].iloc[i] in sales_rep_names or data['Sales Rep'].iloc[i] in sales_rep_codes or \
-                data['Sales Rep'].iloc[i] == '':
-            pass
-        else:
-            data['Sales Rep'].iloc[i] = ''
+        reference_sales_rep = data['Sales Rep'].iloc[i]
+        if reference_sales_rep not in sales_rep_names or reference_sales_rep not in sales_rep_codes:
             data['ALERT'].iloc[i] = str(data['ALERT'].iloc[i]) + ALERT_TYPE["sales_rep"]
+            data['Sales Rep'].iloc[i] = ""
 
     return data

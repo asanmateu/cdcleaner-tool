@@ -4,8 +4,8 @@ from queries import query_payment_methods
 
 
 def payment_methods_cleaner(data):
-    """ Validates payment methods by checking that there are no duplicate names. If it does contain duplicates or if it the payment method does not exist
-    it will leave an alert note for csm to take the necessary action.
+    """ Validates payment methods by checking that there are no duplicate names. If it does contain duplicates or
+    if it the payment method does not exist it will leave an alert note for csm to take the necessary action.
 
     Note:
         This validation function does not generate omits.
@@ -16,15 +16,17 @@ def payment_methods_cleaner(data):
 
     # Iterate over payment method and payment code columns and validate rows...
     for i in range(0, len(data['Payment Method'])):
+        reference_payment_method = data['Payment Method'].iloc[i]
 
-        if data['Payment Method'].iloc[i] not in duplicate_payment_dict.keys() and data['Payment Code'].iloc[i] not in duplicate_payment_dict.values():
-            if data['Payment Method'].iloc[i] in unique_payment_dict.keys() and data['Payment Code'].iloc[i] in unique_payment_dict.values():
-                pass
-            else:
-                if data['Payment Method'].iloc[i] not in unique_payment_dict.keys():
-                    data['ALERT'].iloc[i] = str(data['ALERT'].iloc[i]) + ALERT_TYPE["payment_method_setup"]
+        # Validate reference shipping method note alerts if not setup or duplicate otherwise do nothing...
+        if reference_payment_method not in duplicate_payment_dict.keys():
+            if reference_payment_method not in unique_payment_dict.keys() or reference_payment_method \
+                    not in unique_payment_dict.values():
+                data['ALERT'].iloc[i] = str(data['ALERT'].iloc[i]) + ALERT_TYPE["payment_method_setup"]
+                data['Payment Method'].iloc[i] = ""
+                data['Payment Code'].iloc[i] = ""
         else:
-            data['Payment Method'].iloc[i] = ''
             data['ALERT'].iloc[i] = str(data['ALERT'].iloc[i]) + ALERT_TYPE["payment_method_duplicate"]
+            data['Payment Method'].iloc[i] = ""
 
     return data
