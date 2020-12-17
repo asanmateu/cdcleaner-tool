@@ -15,35 +15,29 @@ def email_cleaner(data):
     for i in range(0, len(data['Email'])):
 
         if str(data['Email'].iloc[i]).count('@') >= 1:
-            emails = re.findall(regex, str(data['Email'].iloc[i]))
+            input_emails = re.findall(regex, str(data['Email'].iloc[i]))
 
             # Make sure split works if there is a ; too...
-            if emails[0].count(',') >= 1:
-                emails = re.split(r", ", emails[0])
-            elif emails[0].count(';') >= 1:
-                emails = re.split(r"; ", emails[0])
+            if input_emails[0].count(',') >= 1:
+                input_emails = re.split(r", ", input_emails[0])
+            elif input_emails[0].count(';') >= 1:
+                input_emails = re.split(r"; ", input_emails[0])
             else:
-                emails = re.split(r" ", emails[0])
+                input_emails = re.split(r" ", input_emails[0])
 
             # Trim whitespaces to clean emails format...
-            v_emails = [e.strip(" ") for e in emails]
+            valid_emails = [e.strip(" ") for e in input_emails]
 
             # Append valid email input to email column...
-            data['Email'].iloc[i] = v_emails[0]
+            data['Email'].iloc[i] = valid_emails[0]
 
-            # Prepare to append extra emails into additional emails column
-            ad_emails = ", ".join(v_emails[1:])
+            # Append extra emails into additional emails column
+            additional_emails = ", ".join(valid_emails[1:])
+            data['Additional Emails'].iloc[i] = str(data['Additional Emails'].iloc[i]) + additional_emails
 
-            # Add additional emails to string or just sub in if the are no emails yet...
-            if str(data['Additional Emails'].iloc[i]).count('@') >= 1:
-                data['Additional Emails'].iloc[i] = str(data['Additional Emails'].iloc[i]) + ad_emails
-
-                # Check there's only one left in email column otherwise there might be one not caught by regex..
-                if str(data['Email'].iloc[i]).count('@') >= 1:
-                    data['ERROR'].iloc[i] = str(data['ERROR'].iloc[i]) + ERROR_TYPE['email_error']
-
-            else:
-                data['Additional Emails'].iloc[i] = ad_emails
+            # Check there's only one left in email column otherwise there might be one not caught by regex..
+            if str(data['Email'].iloc[i]).count('@') >= 1:
+                data['ERROR'].iloc[i] = str(data['ERROR'].iloc[i]) + ERROR_TYPE['email_error']
 
         else:
             data['ALERT'].iloc[i] = str(data['ALERT'].iloc[i]) + ALERT_TYPE['email_missing']
