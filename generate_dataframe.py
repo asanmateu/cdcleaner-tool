@@ -1,4 +1,5 @@
 from library import np, pd, os
+from paths import PATHS
 
 
 def generate_dataframe():
@@ -9,18 +10,18 @@ def generate_dataframe():
 
     """
     # Change working directory to file inputs...
-    os.chdir(r'/Users/antoniosanmateuserralta/PycharmProjects/JOOR/joor-cd-cleaner/files/input')
+    files = os.listdir(PATHS['path_input'])
 
     # Load original excel sheet into a pandas DataFrame...
-    data = pd.read_excel('customer_data_example.xlsx', na_values=['nan'])
+    data = pd.read_excel(files[1], na_values=['nan'])
 
     # Replace excel default null value...
     data.replace('nan', np.nan, inplace=True)
     data.fillna("", inplace=True)
 
     # Add an empty 'ERROR' column to original data DataFrame to report errors...
+    data['RESULT'] = ""
     data['ALERT'] = ""
     data['ERROR'] = ""
-    data['RESULT'] = ""
 
     return data
