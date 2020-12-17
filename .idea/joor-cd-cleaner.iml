@@ -12,6 +12,7 @@
       <sourceFolder url="file://$MODULE_DIR$/prod" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/services" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/services/callprod" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/services/reporting" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.8" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -19,5 +20,6 @@
   <component name="PyDocumentationSettings">
     <option name="format" value="PLAIN" />
     <option name="myDocStringFormat" value="Plain" />
+    <option name="renderExternalDocumentation" value="true" />
   </component>
 </module>
