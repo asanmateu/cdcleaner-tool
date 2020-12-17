@@ -5,64 +5,27 @@ from errors import ERROR_TYPE
 
 # Function to validate and clean states for required countries...
 def state_cleaner(data):
-    """ Clean invalid states for those rows which contain a country that requires state input.
+    """ Note an error if country requires state and the state input is invalid.
 
     Notes:
         Use AFTER country column is clean.
     """
 
-    # Cropping the data and setting it into lists in standardised format...
-    d_states = data['State'].astype(str)
-    d_states = list(d_state.map(lambda x: x.lower()))
-
-    # Initialize empty list for clean states...
-    c_states = []
-
-    # Iterate over countries to validate states and populate c_states with clean states...
     for i in range(0, len(data['State'])):
-        # Select clean country to validate state for...
-        v_country = data['Country'].iloc[i]
+        reference_country = data['Country'].iloc[i].title()
+        reference_state = data['State'].iloc[i].lower()
 
-        # Select country and its respective dictionary to clean states and note errors if invalid...
-        if v_country in state_countries:
-
-            # Clean from United States dictionary..
-            if v_country == 'United States':
-                if d_states[i] in usa_states.keys():
-                    c_states.append(usa_states[d_states[i]])
-                else:
-                    c_states.append(d_states[i])
-                    data['ERROR'].loc[i] = str(data['ERROR'].iloc[i]) + ERROR_TYPE['state_error']
-
-            # Clean from Canada's dictionary...
-            elif v_country == 'Canada':
-                if d_states[i] in cad_states.keys():
-                    c_states.append(cad_states[d_states[i]])
-                else:
-                    c_states.append(d_states[i])
-                    data['ERROR'].loc[i] = str(data['ERROR'].iloc[i]) + ERROR_TYPE['state_error']
-
-            # Clean from Australia's dictionary...
-            elif v_country == 'Australia':
-                if d_states[i] in aus_states.keys():
-                    c_states.append(aus_states[d_states[i]])
-                else:
-                    c_states.append(d_states[i])
-                    data['ERROR'].loc[i] = str(data['ERROR'].iloc[i]) + ERROR_TYPE['state_error']
-
-            # Clean from Japan's dictionary...
-            else:
-                if d_states[i] in jpn_states.keys():
-                    c_states.append(jpn_states[d_states[i]])
-                else:
-                    c_states.append(d_states[i])
-                    data['ERROR'].loc[i] = str(data['ERROR'].iloc[i]) + ERROR_TYPE['state_error']
-
-                    # If not in state countries then leave it as it is...
+        # If country is in state countries check if the input state is valid otherwise not error...
+        if reference_country in state_countries:
+            if reference_country == 'United States' and reference_state in usa_states.keys():
+                pass
+            elif reference_country == 'Canada' and reference_state in cad_states.keys():
+                pass
+            elif reference_country == 'Australia' and reference_state in aus_states.keys():
+                pass
+            elif reference_country == 'Australia' and reference_state in jpn_states.keys():
+                pass
         else:
-            c_states.append(data['State'].iloc[i])
-
-    # Substitute states column with clean values...
-    data['State'] = c_states
+            data['ERROR'].loc[i] = str(data['ERROR'].iloc[i]) + ERROR_TYPE['state_error']
 
     return data
