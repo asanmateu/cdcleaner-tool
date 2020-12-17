@@ -1,5 +1,6 @@
 # Import necessary modules...
 from library import pd
+from paths import PATHS
 
 
 # Generate the outputs into the output files directory
@@ -19,9 +20,7 @@ def generate_output(data):
     clean_data.drop(['ERROR'], axis=1)
 
     # Export files into a given path and file name
-    clean_file = clean_data.to_csv(
-        r'/Users/antoniosanmateuserralta/PycharmProjects/JOOR/joor-cd-cleaner/files/output/clean_file.csv')
-    results_file = data.to_csv(
-        r'/Users/antoniosanmateuserralta/PycharmProjects/JOOR/joor-cd-cleaner/files/output/omits_file.csv')
+    clean_file = clean_data.to_csv(PATHS['clean_output_path'])
+    results_file = data.to_csv(PATHS['results_output_path'])
 
     return clean_file, results_file
