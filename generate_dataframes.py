@@ -1,7 +1,7 @@
 from library import np, pd, os
 
 
-def generate_dataframes():
+def generate_dataframe():
     """ Take input file and generate a DataFrame to clean and another one to append errors to.
 
     Notes:
@@ -19,9 +19,8 @@ def generate_dataframes():
     data.fillna("", inplace=True)
 
     # Add an empty 'ERROR' column to original data DataFrame to report errors...
-    data['ERROR'] = ''
+    data['ALERT'] = ""
+    data['ERROR'] = ""
+    data['RESULT'] = ""
 
-    # Initialize empty DataFrame with same columns as data file...
-    omissions = pd.DataFrame(columns=data.columns)
-
-    return data, omissions
+    return data
