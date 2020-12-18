@@ -13,12 +13,14 @@ The script features a range of functions with different functionality launched f
 
 2. Request your credential to access `prod_ro`.
 
-3. Input files must be dropped inside the `files/input` directory in `.xlsx` format.
+3. Set up path in `path.py` file 
 
-4. .... Explain how to run it / enter `designer_id` through command etc...
+4. Input files must be dropped inside the `files/input` directory in `.xlsx` format.
 
-5. Once the script has run the `clean file` and the `results file` will be found inside `file/output` directory.
+5. .... Explain how to run it / enter `designer_id` through command etc...
 
-6. Process `clean file` connections.
+6. Once the script has run the `clean file` and the `results file` will be found inside `file/output` directory.
 
-7. Send `results file` to CSM team.
+7. Process `clean file` connections.
+
+8. Send `results file` to CSM team.
