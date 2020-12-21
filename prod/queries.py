@@ -2,25 +2,23 @@
 from connection import query_read_only_prod
 
 
-def query_sales_reps(designer_id: int):
+def query_sales_reps(designer_id):
     """ Take designer id and call prod to make a query that retrieves account users
     for the specific designer id.
 
     Returns:
         pandas DataFrame with desired columns.
     """
-    # Prepare query with f-string to insert designer id and close as string...
+    # Query with f-string to insert designer id and close as string...
     query = f"select id, code, display_name from joor_web.accounts_users where account_id = {designer_id};"
-
-    # Make the query...
     sales_reps = query_read_only_prod(query)
 
     # Extract unique values...
-    sales_rep_names = set(sales_reps['display_name'])
-    sales_rep_codes = set(sales_reps['code'])
+    unique_sales_reps = sales_reps.drop_duplicates(subset=['code', 'display_name'])
+    sales_reps_dict = dict(zip(unique_sales_reps['display_name'], unique_sales_reps['code']))
 
-    # Return a series for names and one for codes...
-    return sales_rep_names, sales_rep_codes
+    # Return dictionary of unique sales reps name code pairs...
+    return sales_reps_dict
 
 
 def query_price_types(designer_id: int):
