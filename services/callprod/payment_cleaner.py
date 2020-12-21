@@ -23,10 +23,12 @@ def payment_methods_cleaner(data):
             if reference_payment_method not in unique_payment_dict.keys() or reference_payment_method \
                     not in unique_payment_dict.values():
                 data['ALERT'].iloc[i] = str(data['ALERT'].iloc[i]) + ALERT_TYPE["payment_method_setup"]
+                # Reset values to no default...
                 data['Payment Method'].iloc[i] = ""
                 data['Payment Code'].iloc[i] = ""
         else:
             data['ALERT'].iloc[i] = str(data['ALERT'].iloc[i]) + ALERT_TYPE["payment_method_duplicate"]
+            # Reset values to no default...
             data['Payment Method'].iloc[i] = ""
             data['Payment Code'].iloc[i] = ""
 
