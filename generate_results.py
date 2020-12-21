@@ -1,21 +1,13 @@
 # Import necessary modules...
-from library import pd, np, os
 from results import RESULT_TYPE
 
 
-# Export ommit and clean files into output folders...
+# Note fin
 def generate_results(data):
-    """ Populates omissions and export both clean and omits file based on rows with errors.
-
-    Args:
-        data (pandas DataFrame):
-
-    Returns:
-        clean_file (csv): Clean data file export.
-        omits_file(csv): Omit data file (containing rows with errors).
+    """ Populate results column in line with overall inputs in alert and error columns.
 
     Notes:
-        Use this function last.
+        Use this function after all validations have been done.
     """
 
     # Populate omissions with files containing errors...
@@ -24,5 +16,7 @@ def generate_results(data):
             data['RESULT'].iloc[i] = RESULT_TYPE['denied']
         elif data['ALERT'].iloc[i] != "":
             data['RESULT'].iloc[i] = RESULT_TYPE['defaulted']
+        else:
+            data['RESULT'].iloc[i] = RESULT_TYPE['approved']
 
     return data
