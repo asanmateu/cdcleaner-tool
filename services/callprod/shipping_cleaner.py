@@ -15,7 +15,7 @@ def shipping_methods_cleaner(data):
     duplicate_shipping_dict, unique_shipping_dict = query_shipping_methods(designer_id)
 
     # Iterate over shipping method and shipping code columns and validate rows...
-    for i in range(0, len(data['Shipping Method'])):
+    for i in range(len(data['Shipping Method'])):
         reference_shipping_method = data['Shipping Method'].iloc[i]
 
         # Validate reference shipping method note alerts if not setup or duplicate otherwise do nothing...

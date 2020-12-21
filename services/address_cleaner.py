@@ -11,7 +11,7 @@ def address_type_cleaner(data):
     """
 
     # # Iterate over input address type list and populate empty list with clean values ...
-    for i in range(0, len(data['Address Type'])):
+    for i in range(len(data['Address Type'])):
         reference_address_type = data['Address Type'].iloc[i].lower()
         if reference_address_type not in valid_types.keys():
             data['ERROR'].iloc[i] = str(data['ERROR'].iloc[i]) + ERROR_TYPE['address_type_error']
@@ -25,7 +25,7 @@ def address_cleaner(data):
     """ Address 1 cannot be empty, if it is notes error. """
 
     # Note error if Address 1 is empty...
-    for i in range(0, len(data['Address 1'])):
+    for i in range(len(data['Address 1'])):
         if data['Address 1'].iloc[i] == "":
             data['ERROR'].iloc[i] = str(data['ERROR'].iloc[i]) + ERROR_TYPE['address_error']
 
@@ -41,7 +41,7 @@ def address_code_cleaner(data):
     duplicates = data.iloc[list(set(data.index) - set(uniques.index))]
 
     # Note error if connections has a second B or S address type without unique address code...
-    for i in range(0, len(duplicates)):
+    for i in range(len(duplicates)):
         index = duplicates.index[i]
         data['ERROR'].iloc[index] = str(data['ERROR'].iloc[index]) + ERROR_TYPE['address_code_error']
 

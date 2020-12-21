@@ -14,7 +14,7 @@ def generate_output(data):
     clean_data = pd.DataFrame(columns=data.columns)
 
     # Rescue all clean rows without error flags and send them to clean DataFrame...
-    for i in range(0, len(data['Country'])):
+    for i in range(len(data['Country'])):
         if data['ERROR'].iloc[i] == "":
             clean_data.append(data.iloc[i])
 

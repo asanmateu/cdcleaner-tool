@@ -11,7 +11,7 @@ def state_cleaner(data):
         Use AFTER country column is clean.
     """
 
-    for i in range(0, len(data['State'])):
+    for i in range(len(data['State'])):
         reference_country = data['Country'].iloc[i].title()
         reference_state = data['State'].iloc[i].lower()
 

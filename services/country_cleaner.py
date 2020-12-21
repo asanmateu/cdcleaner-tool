@@ -13,7 +13,7 @@ def country_cleaner(data):
     """
 
     # Iterate over input country list sub with valid country...
-    for i in range(0, len(data['Country'])):
+    for i in range(len(data['Country'])):
         reference_country = data['Country'].iloc[i].lower()
         if reference_country not in country_dict.keys():
             data['ERROR'].iloc[i] = str(data['ERROR'].iloc[i]) + ERROR_TYPE['country_error']

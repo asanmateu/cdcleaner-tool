@@ -11,7 +11,7 @@ def generate_results(data):
     """
 
     # Populate omissions with files containing errors...
-    for i in range(0, len(data['ERROR'])):
+    for i in range(len(data['ERROR'])):
         if data['ERROR'].iloc[i] != "":
             data['RESULT'].iloc[i] = RESULT_TYPE['denied']
         elif data['ALERT'].iloc[i] != "":

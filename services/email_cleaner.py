@@ -12,7 +12,7 @@ def email_cleaner(data):
     regex = r"\w.+@\S+"
 
     # Iterate over the email column to clean those cells in which there is more than 1 email...
-    for i in range(0, len(data['Email'])):
+    for i in range(len(data['Email'])):
 
         if str(data['Email'].iloc[i]).count('@') >= 1:
             input_emails = re.findall(regex, str(data['Email'].iloc[i]))

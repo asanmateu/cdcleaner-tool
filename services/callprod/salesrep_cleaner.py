@@ -15,7 +15,7 @@ def sales_rep_cleaner(data):
     sales_reps_dict = query_sales_reps(designer_id)
 
     # Iterate and clean sales reps while making alert note for those that don't exist...
-    for i in range(0, len(data['Sales Rep'])):
+    for i in range(len(data['Sales Rep'])):
         reference_sales_rep = data['Sales Rep'].iloc[i]
         if reference_sales_rep not in sales_reps_dict.keys() or reference_sales_rep not in sales_reps_dict.values():
             data['ALERT'].iloc[i] = str(data['ALERT'].iloc[i]) + ALERT_TYPE["sales_rep"]

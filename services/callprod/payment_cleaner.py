@@ -15,7 +15,7 @@ def payment_methods_cleaner(data):
     duplicate_payment_dict, unique_payment_dict = query_payment_methods(designer_id)
 
     # Iterate over payment method and payment code columns and validate rows...
-    for i in range(0, len(data['Payment Method'])):
+    for i in range(len(data['Payment Method'])):
         reference_payment_method = data['Payment Method'].iloc[i]
 
         # Validate reference shipping method note alerts if not setup or duplicate otherwise do nothing...
