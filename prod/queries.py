@@ -89,3 +89,13 @@ def query_shipping_methods(designer_id: int):
 
     # Return dataframe with data from call to prod by running query...
     return duplicate_shipping_dict, unique_shipping_dict
+
+
+def query_customer_info(designer_id: int):
+    """Takes designer id and retrieves active customer group name and code details for the desired
+    designer ready for validation. """
+
+    query = f"select customer_group_name, customer_group_code from joor_web.customer_groups " \
+            f"where account_id = {designer_id} and deleted = FALSE;"
+
+    customer_groups = query_read_only_prod(query)
