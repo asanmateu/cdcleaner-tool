@@ -1,5 +1,7 @@
 # Declaration of constant error variables...
 ERROR_TYPE = {
+
+    # General input errors...
     "country_error": "Invalid country; ",
     "state_error": "Invalid state; ",
     "city_error": "Invalid city; ",
@@ -13,4 +15,11 @@ ERROR_TYPE = {
     "shipping_method_error": "Invalid shipping method; ",
     "sales_rep_error": "Invalid sales rep; ",
     "zipcode_error": "United State addresses require zipcode input; "
+
+    # Length validation errors...
+
+
+
+
+
 }
