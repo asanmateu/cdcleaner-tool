@@ -1,6 +1,5 @@
 from library import getpass
 
-
 # Set up tunnel connection to prod with querying functions...
 CONNECTION_SETTINGS = {
     'read_only_prod': {
