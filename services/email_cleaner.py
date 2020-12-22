@@ -2,6 +2,7 @@
 from library import re
 from errors import ERROR_TYPE
 from alerts import ALERT_TYPE
+from lengths import LIMITS
 
 
 def email_cleaner(data):
@@ -41,5 +42,8 @@ def email_cleaner(data):
 
         else:
             data['ALERT'].iloc[i] = str(data['ALERT'].iloc[i]) + ALERT_TYPE['email_missing']
+
+        if len(str(data['Email'].iloc[i])) > LIMITS['email']:
+            data['ERROR'].iloc[i] = str(data['ALERT'].iloc[i]) + ALERT_TYPE['email_length']
 
     return data
