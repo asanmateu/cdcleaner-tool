@@ -17,7 +17,7 @@ ERROR_TYPE = {
     "payment_method_error": "Invalid payment method; ",
     "shipping_method_error": "Invalid shipping method; ",
     "sales_rep_error": "Invalid sales rep; ",
-    "zipcode_error": "United State addresses require zipcode input; ",
+    "zip_error": "United State addresses require zipcode input; ",
 
     # Length validation errors...
     "customer_code_length": f"Customer code exceeds {LIMITS['customer_code']} characters. ",

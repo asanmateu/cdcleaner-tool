@@ -1,6 +1,7 @@
 # Import necessary modules...
 from states import state_countries, aus_states, usa_states, cad_states, jpn_states
 from errors import ERROR_TYPE
+from lengths import LIMITS
 
 
 # Function to validate and clean states for required countries...
@@ -27,5 +28,9 @@ def state_cleaner(data):
                 pass
         else:
             data['ERROR'].loc[i] = str(data['ERROR'].iloc[i]) + ERROR_TYPE['state_error']
+
+        # If length exceeds the limit note an error...
+        if len(str(data['State'].iloc[i])) > LIMITS['state']:
+            data['ERROR'].iloc[i] = str(data['ERROR'].iloc[i]) + ERROR_TYPE['state_length']
 
     return data

@@ -44,6 +44,6 @@ def email_cleaner(data):
             data['ALERT'].iloc[i] = str(data['ALERT'].iloc[i]) + ALERT_TYPE['email_missing']
 
         if len(str(data['Email'].iloc[i])) > LIMITS['email']:
-            data['ERROR'].iloc[i] = str(data['ALERT'].iloc[i]) + ALERT_TYPE['email_length']
+            data['ERROR'].iloc[i] = str(data['ERROR'].iloc[i]) + ALERT_TYPE['email_length']
 
     return data

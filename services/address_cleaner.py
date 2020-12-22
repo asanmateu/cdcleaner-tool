@@ -1,5 +1,6 @@
 from addtypes import valid_types
 from errors import ERROR_TYPE
+from lengths import LIMITS
 
 
 def address_type_cleaner(data):
@@ -24,10 +25,14 @@ def address_type_cleaner(data):
 def address_cleaner(data):
     """ Address 1 cannot be empty, if it is notes error. """
 
-    # Note error if Address 1 is empty...
     for i in range(len(data['Address 1'])):
+        # If address 1 is empty then note an error...
         if data['Address 1'].iloc[i] == "":
             data['ERROR'].iloc[i] = str(data['ERROR'].iloc[i]) + ERROR_TYPE['address_error']
+
+        # If Address 1 exceeds the character limit then note an error...
+        if len(str(data['Address 1'].iloc[i])) > LIMITS['address1']:
+            data['ERROR'].iloc[i] = str(data['ERROR'].iloc[i]) + ERROR_TYPE['address1_length']
 
     return data
 
@@ -44,5 +49,9 @@ def address_code_cleaner(data):
     for i in range(len(duplicates)):
         index = duplicates.index[i]
         data['ERROR'].iloc[index] = str(data['ERROR'].iloc[index]) + ERROR_TYPE['address_code_error']
+
+        # If address code exceeds the character limit then note an error...
+        if len(data['Address Code'].iloc[i]) > LIMITS['address_code']:
+            data['ERROR'].iloc[i] = str(data['ERROR'].iloc[i]) + ERROR_TYPE['address_code_length']
 
     return data

@@ -45,30 +45,6 @@ def print_return_type(func):
     return wrapper
 
 
-def memoize(func):
-    """Stores the results of the decorated function for fast lookup.
-
-    Args:
-        func (callable): The function being decorated
-
-    Returns:
-        callable: The decorated function
-    """
-    # Store results in a dict that maps arguments to results...
-    cache = {}
-
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-        # If the arguments haven' been seen before...
-        if (args, kwargs) not in cache:
-            # Call function and store the result...
-            cache[(args, kwargs)] = func(*args, **kwargs)
-
-        return cache[(args, kwargs)]
-
-    return wrapper
-
-
 def counter(func):
     """Adds a counter of how many times the functions being decorated are used.
 
