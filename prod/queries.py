@@ -2,7 +2,34 @@
 from connection import query_read_only_prod
 
 
-def query_sales_reps(designer_id):
+def query_price_types(designer_id: int):
+    """ Take designer id and call prod to make a query that retrieves active price types
+    for the specific designer id.
+
+    Returns:
+        pandas DataFrame with desired columns.
+
+    """
+    query = f"select c.code, pt.name, cx.code, pt.created from joor_web.price_types pt join joor_web.currencies " \
+            f"c on c.id = pt.currency_id join joor_web.currencies cx on cx.id = pt.retail_currency_id " \
+            f"where pt.designer_id = {designer_id};"
+
+    price_types = query_read_only_prod(query)
+
+    return price_types
+
+
+def query_customer_info(designer_id: int):
+    """Takes designer id and retrieves active customer group name and code details for the desired
+    designer ready for validation. """
+
+    query = f"select customer_group_name, customer_group_code from joor_web.customer_groups " \
+            f"where account_id = {designer_id} and deleted = FALSE;"
+
+    customer_groups = query_read_only_prod(query)
+
+
+def query_sales_reps(designer_id: int):
     """ Take designer id and call prod to make a query that retrieves account users
     for the specific designer id.
 
@@ -19,23 +46,6 @@ def query_sales_reps(designer_id):
 
     # Return dictionary of unique sales reps name code pairs...
     return sales_reps_dict
-
-
-def query_price_types(designer_id: int):
-    """ Take designer id and call prod to make a query that retrieves active price types
-    for the specific designer id.
-
-    Returns:
-        pandas DataFrame with desired columns.
-
-    """
-    query = f"select c.code, pt.name, cx.code, pt.created from joor_web.price_types pt join joor_web.currencies " \
-            f"c on c.id = pt.currency_id join joor_web.currencies cx on cx.id = pt.retail_currency_id " \
-            f"where pt.designer_id = {designer_id};"
-
-    price_types = query_read_only_prod(query)
-
-    return price_types
 
 
 def query_payment_methods(designer_id: int):
@@ -89,13 +99,3 @@ def query_shipping_methods(designer_id: int):
 
     # Return dataframe with data from call to prod by running query...
     return duplicate_shipping_dict, unique_shipping_dict
-
-
-def query_customer_info(designer_id: int):
-    """Takes designer id and retrieves active customer group name and code details for the desired
-    designer ready for validation. """
-
-    query = f"select customer_group_name, customer_group_code from joor_web.customer_groups " \
-            f"where account_id = {designer_id} and deleted = FALSE;"
-
-    customer_groups = query_read_only_prod(query)
