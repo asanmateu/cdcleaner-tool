@@ -3,7 +3,7 @@ from alerts import ALERT_TYPE
 from queries import query_shipping_methods
 
 
-def shipping_methods_cleaner(data):
+def shipping_methods_cleaner(data, designer_id: int):
     """ Validates shipping methods by checking that there are no duplicate names. If it does contain duplicates or
     if it the shipping method does not exist it will leave an alert note for csm to take the necessary action.
 
