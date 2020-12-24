@@ -1,4 +1,4 @@
-from library import getpass
+from library import getpass, os
 
 # Set up tunnel connection to prod with querying functions...
 CONNECTION_SETTINGS = {
@@ -16,9 +16,9 @@ CONNECTION_SETTINGS = {
         'db_default': 'joor_dev'},
     'user': {
         'name': getpass.getuser(),
-        'ssh_username': '',
-        'ssh_password': '',
-        'db_username': '',
-        'db_password': '',
+        'ssh_username': os.environ.get('SSH_USERNAME'),
+        'ssh_password': os.environ.get('SSH_PASSWORD'),
+        'db_username': os.environ.get('PROD_USERNAME'),
+        'db_password': os.environ.get('PROD_PASSWORD'),
         'credentials_set': False}
 }
