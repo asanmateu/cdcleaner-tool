@@ -1,6 +1,6 @@
 # Import necessary modules from library...
 from library import getpass, create_engine, exc, SSHTunnelForwarder, BaseSSHTunnelForwarderError, pd
-from prod_settings import CONNECTION_SETTINGS
+from db_settings import CONNECTION_SETTINGS
 
 
 def get_credentials():
