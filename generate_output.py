@@ -14,11 +14,11 @@ def generate_output(data):
     clean_data = pd.DataFrame(columns=data.columns)
 
     # Rescue all clean rows without error flags and send them to clean DataFrame...
-    for i in range(len(data['Country'])):
-        if data['ERROR'].iloc[i] == "":
-            clean_data.append(data.iloc[i])
+    for i, row in data.iterrows():
+        if row['ERROR'] == "":
+            clean_data.append(row)
 
-    clean_data.drop(['ERROR'], axis=1)
+    clean_data.drop('ERROR', axis=1, inplace=True)
 
     # Export files given output path and file name
     clean_file = clean_data.to_csv(PATHS['clean_output_path'])
