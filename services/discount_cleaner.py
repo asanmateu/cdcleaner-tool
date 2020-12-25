@@ -8,10 +8,10 @@ def discount_cleaner(data):
     for i, row in data.iterrows():
         # If there is any % symbol strip it...
         if row['Discount'].count('%') > 1:
-            row['Discount'] = row['Discount'].strip('%')
+            data['Discount'].iloc[i] = data['Discount'].iloc[i].strip('%')
 
         # If length exceeds limit throw error...
         if len(str(row['Discount'])) > LIMITS['discount']:
-            row['ERROR'] = str(row['ERROR']) + ERROR_TYPE['discount_length']
+            data['ERROR'].iloc[i] = str(row['ERROR']) + ERROR_TYPE['discount_length']
 
     return data

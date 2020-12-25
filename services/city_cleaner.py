@@ -9,11 +9,11 @@ def city_cleaner(data):
     for i, row in data.iterrows():
         # If city is empty note an error for invalid city input...
         if row['City'] == '':
-            row['ERROR'] = str(row['ERROR']) + ERROR_TYPE['city_error']
+            data['ERROR'].iloc[i] = str(row['ERROR']) + ERROR_TYPE['city_error']
 
         # If city length exceeds character limit note an error...
         if len(str(row['City'])) > LIMITS['city']:
-            row['ERROR'] = str(row['ERROR']) + ERROR_TYPE['city_length']
+            data['ERROR'].iloc[i] = str(row['ERROR']) + ERROR_TYPE['city_length']
 
     return data
 

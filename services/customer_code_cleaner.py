@@ -8,6 +8,6 @@ def customer_code_cleaner(data):
     for i, row in data.iterrows():
         # If input exceeds customer code character limit note an error...
         if len(str(row['Customer Code'])) > LIMITS['customer_code']:
-            row['ERROR'] = str(row['ERROR']) + ERROR_TYPE['customer_code_length']
+            data['ERROR'].iloc[i] = str(row['ERROR']) + ERROR_TYPE['customer_code_length']
 
     return data

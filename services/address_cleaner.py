@@ -16,9 +16,9 @@ def address_type_cleaner(data):
     for i, row in data.iterrows():
         reference_address_type = address_types[i]
         if reference_address_type not in valid_types.keys():
-            row['ERROR'] = str(row['ERROR']) + ERROR_TYPE['address_type_error']
+            data['ERROR'].iloc[i] = str(row['ERROR']) + f"{reference_address_type}" + ERROR_TYPE['address_type_error']
         else:
-            row['Address Type'] = valid_types[reference_address_type]
+            data['Address Type'].iloc[i] = valid_types[reference_address_type]
 
     return data
 
@@ -29,11 +29,11 @@ def address_cleaner(data):
     for i, row in data.iterrows():
         # If address 1 is empty then note an error...
         if row['Address 1'] == "":
-            row['ERROR'] = str(row['ERROR']) + ERROR_TYPE['address_error']
+            data['ERROR'].iloc[i] = str(row['ERROR']) + ERROR_TYPE['address_error']
 
         # If Address 1 exceeds the character limit then note an error...
         if len(str(row['Address 1'])) > LIMITS['address1']:
-            row['ERROR'] = str(row['ERROR']) + ERROR_TYPE['address1_length']
+            data['ERROR'].iloc[i] = str(row['ERROR']) + ERROR_TYPE['address1_length']
 
     return data
 

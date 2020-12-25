@@ -12,11 +12,11 @@ def price_type_cleaner(data):
 
     """
 
-    for i, row in data.iterrows():
+    for i in range(len(data['Price Label'])):
         # Get a tuple with wholesale currency, price label, retail currency as reference
         reference_price_type =
-        if row['Price Label'] == '':
-            row['ERROR'] = str(row['ERROR']) + ERROR_TYPE['price_type_error']
+        if data['Price Label'].iloc[i] == '':
+            data['ERROR'].iloc[i] = str(row['ERROR']) + ERROR_TYPE['price_type_error']
         elif
 
     return data

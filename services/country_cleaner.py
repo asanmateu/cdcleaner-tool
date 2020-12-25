@@ -18,9 +18,9 @@ def country_cleaner(data):
         reference_country = countries[i]
         # If input country is not in valid entries dictionary keys then note invalid country error...
         if reference_country not in country_dict.keys():
-            row['ERROR'] = str(row['ERROR']) + ERROR_TYPE['country_error']
+            data['ERROR'].iloc[i] = str(row['ERROR']) + f"{reference_country}: " + ERROR_TYPE['country_error']
         # If input country is in valid country dictionary keys then replace it by the corresponding value...
         else:
-            row['Country'] = country_dict.get('reference_country')
+            data['Country'].iloc[i] = country_dict.get(reference_country)
 
     return data

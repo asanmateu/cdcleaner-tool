@@ -13,10 +13,10 @@ def generate_results(data):
     # Populate omissions with files containing errors...
     for i, row in data.iterrows():
         if row['ERROR'] != "":
-            row['RESULT'] = RESULT_TYPE['denied']
+            data['RESULT'].iloc[i] = RESULT_TYPE['denied']
         elif row['ALERT'] != "":
-            row['RESULT'] = RESULT_TYPE['defaulted']
+            data['RESULT'].iloc[i] = RESULT_TYPE['defaulted']
         else:
-            row['RESULT'] = RESULT_TYPE['approved']
+            data['RESULT'].iloc[i] = RESULT_TYPE['approved']
 
     return data

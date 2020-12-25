@@ -24,11 +24,11 @@ def state_cleaner(data):
             if ((reference_country == 'United States') and (reference_state not in usa_states.keys())) or \
                     ((reference_country == 'Canada') and (reference_state not in cad_states.keys())) or \
                     ((reference_country == 'Australia') and (reference_state not in aus_states.keys())) or \
-                    ((reference_country == 'Australia') and (reference_state not in jpn_states.keys())):
-                row['ERROR'] = str(row['ERROR']) + ERROR_TYPE['state_error']
+                    ((reference_country == 'Japan') and (reference_state not in jpn_states.keys())):
+                data['ERROR'].iloc[i] = str(row['ERROR']) + f"{reference_state}: " + ERROR_TYPE['state_error']
 
         # If length exceeds the limit note an error...
         if len(str(row['State'])) > LIMITS['state']:
-            row['ERROR'] = str(row['ERROR']) + ERROR_TYPE['state_length']
+            data['ERROR'].iloc[i] = str(row['ERROR']) + ERROR_TYPE['state_length']
 
     return data

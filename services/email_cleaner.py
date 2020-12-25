@@ -30,20 +30,20 @@ def email_cleaner(data):
             valid_emails = [e.strip(" ") for e in input_emails]
 
             # Append valid email input to email column...
-            row['Email'] = valid_emails[0]
+            data['Email'].iloc[i] = valid_emails[0]
 
             # Append extra emails into additional emails column
             additional_emails = ", ".join(valid_emails[1:])
-            row['Additional Emails'] = str(row['Additional Emails']) + additional_emails
+            data['Additional Emails'].iloc[i] = str(row['Additional Emails']) + additional_emails
 
             # Check there's only one left in email column otherwise there might be one not caught by regex..
             if str(row['Email']).count('@') >= 1:
-                row['ERROR'] = str(row['ERROR']) + ERROR_TYPE['email_error']
+                data['ERROR'].iloc[i] = str(row['ERROR']) + ERROR_TYPE['email_error']
 
         else:
-            row['ALERT'] = str(row['ALERT']) + ALERT_TYPE['email_missing']
+            data['ALERT'].iloc[i] = str(row['ALERT']) + ALERT_TYPE['email_missing']
 
         if len(str(row['Email'])) > LIMITS['email']:
-            row['ERROR'] = str(row['ERROR']) + ALERT_TYPE['email_length']
+            data['ERROR'].iloc[i] = str(row['ERROR']) + ALERT_TYPE['email_length']
 
     return data
