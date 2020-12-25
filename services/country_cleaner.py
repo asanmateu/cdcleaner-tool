@@ -11,15 +11,16 @@ def country_cleaner(data):
     Notes:
         I recommend you use this one first.
     """
+    countries = [*map(lambda x: x.lower(), data['Country'])]
 
     # Iterate over input country list sub with valid country...
-    for i in range(len(data['Country'])):
-        reference_country = data['Country'].iloc[i].lower()
+    for i, row in data.iterrows():
+        reference_country = countries[i]
         # If input country is not in valid entries dictionary keys then note invalid country error...
         if reference_country not in country_dict.keys():
-            data['ERROR'].iloc[i] = str(data['ERROR'].iloc[i]) + ERROR_TYPE['country_error']
+            row['ERROR'] = str(row['ERROR']) + ERROR_TYPE['country_error']
         # If input country is in valid country dictionary keys then replace it by the corresponding value...
         else:
-            data['Country'].iloc[i] = country_dict[reference_country]
+            row['Country'] = country_dict.get('reference_country')
 
     return data

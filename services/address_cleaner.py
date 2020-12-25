@@ -10,14 +10,15 @@ def address_type_cleaner(data):
     Notes:
         Run before doing any other work on addresses. Make sure store_cleaner has been run.
     """
+    address_types = [*map(lambda x: x.lower(), data['Address Type'])]
 
     # # Iterate over input address type list and populate empty list with clean values ...
-    for i in range(len(data['Address Type'])):
-        reference_address_type = data['Address Type'].iloc[i].lower()
+    for i, row in data.iterrows():
+        reference_address_type = address_types[i]
         if reference_address_type not in valid_types.keys():
-            data['ERROR'].iloc[i] = str(data['ERROR'].iloc[i]) + ERROR_TYPE['address_type_error']
+            row['ERROR'] = str(row['ERROR']) + ERROR_TYPE['address_type_error']
         else:
-            data['Address Type'].iloc[i] = valid_types[reference_address_type]
+            row['Address Type'] = valid_types[reference_address_type]
 
     return data
 
@@ -25,14 +26,14 @@ def address_type_cleaner(data):
 def address_cleaner(data):
     """ Address 1 cannot be empty, if it is notes error. """
 
-    for i in range(len(data['Address 1'])):
+    for i, row in data.iterrows():
         # If address 1 is empty then note an error...
-        if data['Address 1'].iloc[i] == "":
-            data['ERROR'].iloc[i] = str(data['ERROR'].iloc[i]) + ERROR_TYPE['address_error']
+        if row['Address 1'] == "":
+            row['ERROR'] = str(row['ERROR']) + ERROR_TYPE['address_error']
 
         # If Address 1 exceeds the character limit then note an error...
-        if len(str(data['Address 1'].iloc[i])) > LIMITS['address1']:
-            data['ERROR'].iloc[i] = str(data['ERROR'].iloc[i]) + ERROR_TYPE['address1_length']
+        if len(str(row['Address 1'])) > LIMITS['address1']:
+            row['ERROR'] = str(row['ERROR']) + ERROR_TYPE['address1_length']
 
     return data
 

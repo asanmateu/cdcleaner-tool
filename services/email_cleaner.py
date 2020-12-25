@@ -13,10 +13,10 @@ def email_cleaner(data):
     regex = r"\w.+@\S+"
 
     # Iterate over the email column to clean those cells in which there is more than 1 email...
-    for i in range(len(data['Email'])):
+    for i, row in data.iterrows():
 
-        if str(data['Email'].iloc[i]).count('@') >= 1:
-            input_emails = re.findall(regex, str(data['Email'].iloc[i]))
+        if str(row['Email']).count('@') >= 1:
+            input_emails = re.findall(regex, str(row['Email']))
 
             # Make sure split works if there is a ; too...
             if input_emails[0].count(',') >= 1:
@@ -30,20 +30,20 @@ def email_cleaner(data):
             valid_emails = [e.strip(" ") for e in input_emails]
 
             # Append valid email input to email column...
-            data['Email'].iloc[i] = valid_emails[0]
+            row['Email'] = valid_emails[0]
 
             # Append extra emails into additional emails column
             additional_emails = ", ".join(valid_emails[1:])
-            data['Additional Emails'].iloc[i] = str(data['Additional Emails'].iloc[i]) + additional_emails
+            row['Additional Emails'] = str(row['Additional Emails']) + additional_emails
 
             # Check there's only one left in email column otherwise there might be one not caught by regex..
-            if str(data['Email'].iloc[i]).count('@') >= 1:
-                data['ERROR'].iloc[i] = str(data['ERROR'].iloc[i]) + ERROR_TYPE['email_error']
+            if str(row['Email']).count('@') >= 1:
+                row['ERROR'] = str(row['ERROR']) + ERROR_TYPE['email_error']
 
         else:
-            data['ALERT'].iloc[i] = str(data['ALERT'].iloc[i]) + ALERT_TYPE['email_missing']
+            row['ALERT'] = str(row['ALERT']) + ALERT_TYPE['email_missing']
 
-        if len(str(data['Email'].iloc[i])) > LIMITS['email']:
-            data['ERROR'].iloc[i] = str(data['ERROR'].iloc[i]) + ALERT_TYPE['email_length']
+        if len(str(row['Email'])) > LIMITS['email']:
+            row['ERROR'] = str(row['ERROR']) + ALERT_TYPE['email_length']
 
     return data

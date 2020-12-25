@@ -12,25 +12,23 @@ def state_cleaner(data):
         Use AFTER country column is clean.
     """
 
-    for i in range(len(data['State'])):
-        reference_country = data['Country'].iloc[i].title()
-        reference_state = data['State'].iloc[i].lower()
+    countries = [*map(lambda x: x.title(), data['Country'])]
+    states = [*map(lambda x: x.lower(), data['State'])]
+
+    for i, row in data.iterrows():
+        reference_country = countries[i]
+        reference_state = states[i]
 
         # If country is in state countries check if the input state is valid otherwise not error...
         if reference_country in state_countries:
-            if reference_country == 'United States' and reference_state in usa_states.keys():
-                pass
-            elif reference_country == 'Canada' and reference_state in cad_states.keys():
-                pass
-            elif reference_country == 'Australia' and reference_state in aus_states.keys():
-                pass
-            elif reference_country == 'Australia' and reference_state in jpn_states.keys():
-                pass
-        else:
-            data['ERROR'].loc[i] = str(data['ERROR'].iloc[i]) + ERROR_TYPE['state_error']
+            if ((reference_country == 'United States') and (reference_state not in usa_states.keys())) or \
+                    ((reference_country == 'Canada') and (reference_state not in cad_states.keys())) or \
+                    ((reference_country == 'Australia') and (reference_state not in aus_states.keys())) or \
+                    ((reference_country == 'Australia') and (reference_state not in jpn_states.keys())):
+                row['ERROR'] = str(row['ERROR']) + ERROR_TYPE['state_error']
 
         # If length exceeds the limit note an error...
-        if len(str(data['State'].iloc[i])) > LIMITS['state']:
-            data['ERROR'].iloc[i] = str(data['ERROR'].iloc[i]) + ERROR_TYPE['state_length']
+        if len(str(row['State'])) > LIMITS['state']:
+            row['ERROR'] = str(row['ERROR']) + ERROR_TYPE['state_length']
 
     return data

@@ -15,19 +15,19 @@ def shipping_methods_cleaner(data, designer_id: int):
     duplicate_shipping_dict, unique_shipping_dict = query_shipping_methods(designer_id)
 
     # Iterate over shipping method and shipping code columns and validate rows...
-    for i in range(len(data['Shipping Method'])):
-        reference_shipping_method = data['Shipping Method'].iloc[i]
+    for i, row in data.iterrows():
+        reference_shipping_method = row['Shipping Method']
 
         # Validate reference shipping method note alerts if not setup or duplicate otherwise do nothing...
         if reference_shipping_method not in duplicate_shipping_dict.keys():
             if reference_shipping_method not in unique_shipping_dict.keys() or reference_shipping_method not in \
                     unique_shipping_dict.values():
-                data['ALERT'].iloc[i] = str(data['ALERT'].iloc[i]) + ALERT_TYPE['shipping_method_setup']
-                data['Shipping Method'].iloc[i] = ""
-                data['Shipping Code'].iloc[i] = ""
+                row['ALERT'] = str(row['ALERT']) + ALERT_TYPE['shipping_method_setup']
+                row['Shipping Method'] = ""
+                row['Shipping Code'] = ""
         else:
-            data['ALERT'].iloc[i] = str(data['ALERT'].iloc[i]) + ALERT_TYPE['shipping_method_duplicate']
-            data['Shipping Method'].iloc[i] = ""
-            data['Shipping Code'].iloc[i] = ""
+            row['ALERT'] = str(row['ALERT']) + ALERT_TYPE['shipping_method_duplicate']
+            row['Shipping Method'] = ""
+            row['Shipping Code'] = ""
 
     return data
