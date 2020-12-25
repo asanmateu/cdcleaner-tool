@@ -42,7 +42,7 @@ def query_sales_reps(designer_id: int):
 
     # Extract unique values...
     unique_sales_reps = sales_reps.drop_duplicates(subset=['code', 'display_name'])
-    sales_reps_dict = dict(zip(unique_sales_reps['display_name'], unique_sales_reps['code']))
+    sales_reps_dict = {*zip(unique_sales_reps['display_name'], unique_sales_reps['code'])}
 
     # Return dictionary of unique sales reps name code pairs...
     return sales_reps_dict
@@ -65,10 +65,10 @@ def query_payment_methods(designer_id: int):
 
     # Divide duplicates and unique values into dictionaries to ease validation...
     duplicate_payment_methods = payment_methods[payment_methods.duplicated(subset=['code', 'payment_name'], keep=False)]
-    duplicate_payment_dict = dict(zip(duplicate_payment_methods['payment_name'], duplicate_payment_methods['code']))
+    duplicate_payment_dict = {*zip(duplicate_payment_methods['payment_name'], duplicate_payment_methods['code'])}
 
     unique_payment_methods = payment_methods.drop_duplicates(subset=['code', 'payment_name'])
-    unique_payment_dict = dict(zip(unique_payment_methods['payment_name'], unique_payment_methods['code']))
+    unique_payment_dict = {*zip(unique_payment_methods['payment_name'], unique_payment_methods['code'])}
 
     # Return dataframe with data from call to prod by running query...
     return duplicate_payment_dict, unique_payment_dict
@@ -92,10 +92,10 @@ def query_shipping_methods(designer_id: int):
 
     # Divide duplicates and unique values into dictionaries to ease validation...
     duplicate_shipping_methods = shipping_methods[shipping_methods.duplicated(subset=['code', 'shipping_name'], keep=False)]
-    duplicate_shipping_dict = dict(zip(duplicate_shipping_methods['shipping_name'], duplicate_shipping_methods['code']))
+    duplicate_shipping_dict = {*zip(duplicate_shipping_methods['shipping_name'], duplicate_shipping_methods['code'])}
 
     unique_shipping_methods = shipping_methods.drop_duplicates(subset=['code', 'shipping_name'])
-    unique_shipping_dict = dict(zip(unique_shipping_methods['shipping_name'], unique_shipping_methods['code']))
+    unique_shipping_dict = {*zip(unique_shipping_methods['shipping_name'], unique_shipping_methods['code'])}
 
     # Return dataframe with data from call to prod by running query...
     return duplicate_shipping_dict, unique_shipping_dict
