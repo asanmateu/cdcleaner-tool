@@ -24,4 +24,10 @@ def generate_dataframe():
     data['ALERT'] = ""
     data['ERROR'] = ""
 
+    # Convert data columns into object type...
+    data = data.apply(lambda x: x.astype(str))
+
+    # Strip whitespaces from columns...
+    data = data.apply(lambda x: x.str.strip() if x.dtype == "object" else x)
+
     return data
