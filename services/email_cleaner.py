@@ -14,11 +14,11 @@ def email_cleaner(data):
 
     # Iterate over the email column to clean those cells in which there is more than 1 email...
     for i, row in data.iterrows():
-
+        # If more than one email is found then find them and clean them...
         if str(row['Email']).count('@') >= 1:
             input_emails = re.findall(regex, str(row['Email']))
 
-            # Make sure split works if there is a ; too...
+            # Make sure to split emails when delimited by ";", "," and " "...
             if input_emails[0].count(',') >= 1:
                 input_emails = re.split(r", ", input_emails[0])
             elif input_emails[0].count(';') >= 1:
@@ -26,13 +26,13 @@ def email_cleaner(data):
             else:
                 input_emails = re.split(r" ", input_emails[0])
 
-            # Trim whitespaces to clean emails format...
+            # Trim whitespaces to clean input email format...
             valid_emails = [e.strip(" ") for e in input_emails]
 
             # Append valid email input to email column...
             data['Email'].iloc[i] = valid_emails[0]
 
-            # Append extra emails into additional emails column
+            # Append extra emails into additional emails column delimited with ","...
             additional_emails = ", ".join(valid_emails[1:])
             data['Additional Emails'].iloc[i] = str(row['Additional Emails']) + additional_emails
 
