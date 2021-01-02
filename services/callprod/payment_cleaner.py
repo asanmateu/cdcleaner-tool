@@ -21,7 +21,9 @@ def payment_methods_cleaner(data, designer_id: int):
 
         # if payment name is blank but there is a payment code
         if reference_payment_name == "" and reference_payment_code != "":
+            # if neither are in duplicates
             if reference_payment_code not in duplicate_payment_dict.values():
+                # if payment method code is not on unique payment methods dictionary...
                 if reference_payment_code not in unique_payment_dict.values():
                     data['ALERT'].iloc[i] = str(row['ALERT']) + f"{reference_payment_code}" + ALERT_TYPE["payment_code_setup"]
                     data['Payment Code'].iloc[i] = ""
@@ -34,7 +36,9 @@ def payment_methods_cleaner(data, designer_id: int):
 
         # if payment code is blank but there is a payment name
         elif reference_payment_name != "" and reference_payment_code == "":
+            # if neither are in duplicates
             if reference_payment_name not in duplicate_payment_dict.keys():
+                # if payment method name is not on unique payment methods dictionary...
                 if reference_payment_name not in unique_payment_dict.keys():
                     data['ALERT'].iloc[i] = str(row['ALERT']) + f"{reference_payment_name}" + ALERT_TYPE["payment_name_setup"]
                     data['Payment Method'].iloc[i] = ""
