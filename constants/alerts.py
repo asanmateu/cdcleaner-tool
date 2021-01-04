@@ -10,20 +10,18 @@ ALERT_TYPE = {
     # Payment methods validation alerts...
     "payment_name_setup": f": payment method does not exist: none was assigned. ",
     "payment_name_notfound": f": payment name not found; use code. ",
-    "payment_code_setup": f": payment method does not exist: none was assigned. ",
-    "payment_code_notfound": f": payment code not found; use name. ",
-    "payment_name_duplicate": f": payment name is duplicated; none was assigned. ",
-    "payment_code_duplicate": f": payment code is duplicated; none was assigned. ",
+    "payment_name_required": f" payment name required for code: ",
+    "payment_code_replaced": ": payment code doesn't match name: replaced by correct match. ",
+    "payment_name_duplicate": f": payment method containing duplicates; none was assigned. ",
     "payment_method_setup": f": payment method pair is not setup; none was assigned. ",
     "payment_method_match": f": payment method pair does not match; none was assigned. ",
 
     # Shipping methods validation alerts...
     "shipping_name_setup": f": shipping method does not exist: none was assigned. ",
     "shipping_name_notfound": f": shipping name not found; use code. ",
-    "shipping_code_setup": f": shipping method does not exist: none was assigned. ",
-    "shipping_code_notfound": f": shipping code not found; use name. ",
-    "shipping_name_duplicate": f": shipping name is duplicated; none was assigned. ",
-    "shipping_code_duplicate": f": shipping code is duplicated; none was assigned. ",
+    "shipping_name_required": f" shipping name required for code: ",
+    "shipping_code_replaced": ": shipping code doesn't match name: replaced by correct match. ",
+    "shipping_name_duplicate": f": shipping method containing duplicates; none was assigned. ",
     "shipping_method_setup": f": shipping method pair is not setup; none was assigned. ",
     "shipping_method_match": f": shipping method pair does not match; none was assigned. ",
 
