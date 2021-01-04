@@ -1,5 +1,6 @@
 from library import np, pd, os
 from paths import PATHS
+from myutils import strip_df, df_to_object_type
 
 
 def generate_dataframe():
@@ -25,9 +26,9 @@ def generate_dataframe():
     data['ERROR'] = ""
 
     # Convert data columns into object type...
-    data = data.apply(lambda x: x.astype(str))
+    data = df_to_object_type(data)
 
     # Strip whitespaces from columns...
-    data = data.apply(lambda x: x.str.strip() if x.dtype == "object" else x)
+    data = strip_df(data)
 
     return data
