@@ -68,6 +68,8 @@ def shipping_methods_cleaner(data, designer_id: int):
                 # if name is found but code is not
                 elif (reference_shipping_name in unique_shipping_dict.keys()) and (
                         reference_shipping_code not in unique_shipping_dict.values()):
+                    data['ALERT'].iloc[i] = str(row['ALERT']) + f"{reference_shipping_code}" \
+                                            + ALERT_TYPE['shipping_code_replaced']
                     data['Shipping Code'].iloc[i] = unique_shipping_dict.get(reference_shipping_name)
                 # if name and code don't match
                 elif unique_shipping_dict.get(reference_shipping_name) != reference_shipping_code:

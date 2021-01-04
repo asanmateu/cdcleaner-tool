@@ -68,6 +68,8 @@ def payment_methods_cleaner(data, designer_id: int):
                 # if name is found but code is not
                 elif (reference_payment_name in unique_payment_dict.keys()) and (
                         reference_payment_code not in unique_payment_dict.values()):
+                    data['ALERT'].iloc[i] = str(row['ALERT']) + f"{reference_payment_code}" \
+                                            + ALERT_TYPE['payment_code_replaced']
                     data['Payment Code'].iloc[i] = unique_payment_dict.get(reference_payment_name)
                 # if name and code don't match
                 elif unique_payment_dict.get(reference_payment_name) != reference_payment_code:
