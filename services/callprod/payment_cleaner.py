@@ -21,30 +21,27 @@ def payment_methods_cleaner(data, designer_id: int):
 
         # if payment name is blank but there is a payment code
         if reference_payment_name == "" and reference_payment_code != "":
-            # if neither are in duplicates
-            if reference_payment_code not in duplicate_payment_dict.values():
-                # if payment method code is not on unique payment methods dictionary...
-                if reference_payment_code not in unique_payment_dict.values():
-                    data['ALERT'].iloc[i] = str(row['ALERT']) + f"{reference_payment_code}" + ALERT_TYPE["payment_code_setup"]
-                    data['Payment Code'].iloc[i] = ""
-            else:
-                # if given payment code is duplicate value
-                data['ALERT'].iloc[i] = str(row['ALERT']) + f"{reference_payment_code}" + ALERT_TYPE["payment_code_duplicate"]
-                # Reset values to no default...
-                data['Payment Method'].iloc[i] = ""
-                data['Payment Code'].iloc[i] = ""
+            # Set alert: payment name required
+            data['ALERT'].iloc[i] = str(row['ALERT']) \
+                                    + ALERT_TYPE["payment_name_required"] + f"{reference_payment_code}"
+            # Reset values to no default...
+            data['Payment Code'].iloc[i] = ""
 
         # if payment code is blank but there is a payment name
         elif reference_payment_name != "" and reference_payment_code == "":
             # if neither are in duplicates
             if reference_payment_name not in duplicate_payment_dict.keys():
                 # if payment method name is not on unique payment methods dictionary...
-                if reference_payment_name not in unique_payment_dict.keys():
-                    data['ALERT'].iloc[i] = str(row['ALERT']) + f"{reference_payment_name}" + ALERT_TYPE["payment_name_setup"]
+                if reference_payment_name in unique_payment_dict.keys():
+                    data['Payment Code'] = unique_payment_dict.get(reference_payment_name)
+                else:
+                    data['ALERT'].iloc[i] = str(row['ALERT']) \
+                                            + f"{reference_payment_name}" + ALERT_TYPE["payment_name_setup"]
                     data['Payment Method'].iloc[i] = ""
             # payment name in duplicate
             else:
-                data['ALERT'].iloc[i] = str(row['ALERT']) + f"{reference_payment_name}" + ALERT_TYPE["payment_name_duplicate"]
+                data['ALERT'].iloc[i] = str(row['ALERT']) + f"{reference_payment_name}" \
+                                        + ALERT_TYPE["payment_name_duplicate"]
                 # Reset values to no default...
                 data['Payment Method'].iloc[i] = ""
                 data['Payment Code'].iloc[i] = ""
@@ -57,28 +54,32 @@ def payment_methods_cleaner(data, designer_id: int):
                 # if neither name nor code is in unique payment dict
                 if (reference_payment_name not in unique_payment_dict.keys()) and (
                         reference_payment_code not in unique_payment_dict.values()):
-                    data['ALERT'].iloc[i] = str(row['ALERT']) + f"{reference_payment_name}: {reference_payment_code}" + ALERT_TYPE["payment_method_setup"]
+                    data['ALERT'].iloc[i] = str(row['ALERT']) + f"{reference_payment_name}: {reference_payment_code}" \
+                                            + ALERT_TYPE["payment_method_setup"]
                     data['Payment Method'].iloc[i] = ""
                     data['Payment Code'].iloc[i] = ""
                 # if code is in unique payment dict but name is not
                 elif (reference_payment_name not in unique_payment_dict.keys()) and (
                         reference_payment_code in unique_payment_dict.values()):
-                    data['ALERT'].iloc[i] = str(row['ALERT']) + f"{reference_payment_name}" + ALERT_TYPE["payment_name_notfound"]
+                    data['ALERT'].iloc[i] = str(row['ALERT']) + f"{reference_payment_name}: {reference_payment_code}" \
+                                            + ALERT_TYPE["payment_method_match"]
                     data['Payment Method'].iloc[i] = ""
+                    data['Payment Code'].iloc[i] = ""
                 # if name is found but code is not
                 elif (reference_payment_name in unique_payment_dict.keys()) and (
                         reference_payment_code not in unique_payment_dict.values()):
-                    data['ALERT'].iloc[i] = str(row['ALERT']) + f"{reference_payment_code}" + ALERT_TYPE["payment_code_notfound"]
-                    data['Payment Method'].iloc[i] = ""
+                    data['Payment Code'].iloc[i] = unique_payment_dict.get(reference_payment_name)
                 # if name and code don't match
                 elif unique_payment_dict.get(reference_payment_name) != reference_payment_code:
-                    data['ALERT'].iloc[i] = str(row['ALERT']) + f"{reference_payment_name}: {reference_payment_code}" + ALERT_TYPE['payment_method_match']
+                    data['ALERT'].iloc[i] = str(row['ALERT']) + f"{reference_payment_name}: {reference_payment_code}" \
+                                            + ALERT_TYPE['payment_method_match']
                     # Reset values to no default...
                     data['Payment Method'].iloc[i] = ""
                     data['Payment Method'].iloc[i] = ""
             # name or code in duplicate
             else:
-                data['ALERT'].iloc[i] = str(row['ALERT']) + f"{reference_payment_name}: {reference_payment_code}" + ALERT_TYPE["payment_method_duplicate"]
+                data['ALERT'].iloc[i] = str(row['ALERT']) + f"{reference_payment_name}: {reference_payment_code}" \
+                                        + ALERT_TYPE["payment_method_duplicate"]
                 # Reset values to no default...
                 data['Payment Method'].iloc[i] = ""
                 data['Payment Code'].iloc[i] = ""
