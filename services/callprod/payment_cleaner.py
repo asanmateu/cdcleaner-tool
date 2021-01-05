@@ -5,7 +5,7 @@ from queries import query_payment_methods
 
 def payment_methods_cleaner(data, designer_id: int):
     """ Validates payment methods by checking that there are no duplicate names. If it does contain duplicates or
-    if it the payment method does not exist it will leave an alert note for csm to take the necessary action.
+    if the payment method does not exist it will leave an alert note for csm to take the necessary action.
 
     Note:
         This validation function only sets alert flags.
