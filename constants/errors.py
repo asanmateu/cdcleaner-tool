@@ -4,7 +4,7 @@ from lengths import LIMITS
 # Declaration of constant error variables...
 ERROR_TYPE = {
 
-    # General input errors...
+    # General input errors
     "country_error": "Invalid country; ",
     "state_error": "Invalid state; ",
     "city_error": "Invalid city; ",
@@ -19,7 +19,7 @@ ERROR_TYPE = {
     "sales_rep_error": "Invalid sales rep; ",
     "zip_error": "United State addresses require zipcode input; ",
 
-    # Length validation errors...
+    # Length validation errors
     "customer_code_length": f"Customer code exceeds {LIMITS['customer_code']} characters. ",
     "alias_length": f"Customer alias exceeds {LIMITS['customer_name']} characters. ",
     "address_code_length": f"Address code exceeds {LIMITS['address_code']} characters. ",
