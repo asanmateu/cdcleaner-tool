@@ -7,7 +7,7 @@ The purpose of this script is to speed up the process of cleaning manual custome
 The script features a range of functions with different functionality launched from `pipeline_master()`.
 
 
-##  ⚙️ Instructions
+## ⚙️  Instructions
 
 1. Make sure you have docker installed: https://github.com/joor/dev/blob/master/README.md
 
