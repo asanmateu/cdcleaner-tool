@@ -32,7 +32,8 @@ def price_type_cleaner(data, designer_id: int):
                 data['Price Currency'].iloc[i] = wholesale_prices_dict.get(reference_label)
 
         # If new template is being processed...
-        elif ("Price Label" in data.columns) and ("Wholesale Currency" in data.columns) and ("Retail Currency" in data.columns):
+        elif ("Price Label" in data.columns) and ("Wholesale Currency" in data.columns) and (
+                "Retail Currency" in data.columns):
 
             # Use wholesale currency, price label, retail currency as reference...
             reference_wholesale_currency = row['Wholesale Currency']
@@ -46,19 +47,26 @@ def price_type_cleaner(data, designer_id: int):
                 data['Retail Currency'].iloc[i] = default_price_tuple[2]
 
             # If retail currency does not match label then correct it...
-            elif (wholesale_prices_dict.get(reference_label) == reference_wholesale_currency) and (retail_prices_dict.get(reference_label) != reference_retail_currency):
-                data['ALERT'].iloc[i] = str(row['ALERT']) + f"{reference_retail_currency}" + ALERT_TYPE['retail_currency_match']
+            elif (wholesale_prices_dict.get(reference_label) == reference_wholesale_currency) and (
+                    retail_prices_dict.get(reference_label) != reference_retail_currency):
+                data['ALERT'].iloc[i] = str(row['ALERT']) + f"{reference_retail_currency}" + ALERT_TYPE[
+                    'retail_currency_match']
                 data['Retail Currency'].iloc[i] = retail_prices_dict.get(reference_label)
 
             # If wholesale currency does not match label then correct it...
-            elif (wholesale_prices_dict.get(reference_label) != reference_wholesale_currency) and (retail_prices_dict.get(reference_label) == reference_retail_currency):
-                data['ALERT'].iloc[i] = str(row['ALERT']) + f"{reference_wholesale_currency}" + ALERT_TYPE['wholesale_currency_match']
+            elif (wholesale_prices_dict.get(reference_label) != reference_wholesale_currency) and (
+                    retail_prices_dict.get(reference_label) == reference_retail_currency):
+                data['ALERT'].iloc[i] = str(row['ALERT']) + f"{reference_wholesale_currency}" + ALERT_TYPE[
+                    'wholesale_currency_match']
                 data['Wholesale Currency'].iloc[i] = wholesale_prices_dict.get(reference_label)
 
             # If both currencies do not match the label then correct both...
-            elif (wholesale_prices_dict.get(reference_label) != reference_wholesale_currency) and (retail_prices_dict.get(reference_label) != reference_retail_currency):
-                data['ALERT'].iloc[i] = str(row['ALERT']) + f"{reference_retail_currency}" + ALERT_TYPE['retail_currency_match']
-                data['ALERT'].iloc[i] = str(row['ALERT']) + f"{reference_wholesale_currency}" + ALERT_TYPE['wholesale_currency_match']
+            elif (wholesale_prices_dict.get(reference_label) != reference_wholesale_currency) and (
+                    retail_prices_dict.get(reference_label) != reference_retail_currency):
+                data['ALERT'].iloc[i] = str(row['ALERT']) + f"{reference_retail_currency}" + ALERT_TYPE[
+                    'retail_currency_match']
+                data['ALERT'].iloc[i] = str(row['ALERT']) + f"{reference_wholesale_currency}" + ALERT_TYPE[
+                    'wholesale_currency_match']
                 data['Retail Currency'].iloc[i] = retail_prices_dict.get(reference_label)
                 data['Wholesale Currency'].iloc[i] = wholesale_prices_dict.get(reference_label)
 
