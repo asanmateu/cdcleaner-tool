@@ -1,6 +1,5 @@
 # Import necessary modules...
-from connection import get_credentials, clear_credentials, query_read_only_prod
-from generate_dataframe import generate_dataframe
+from generate.generate_dataframe import generate_dataframe
 from country_cleaner import country_cleaner
 from state_cleaner import state_cleaner
 from zipcode_cleaner import zipcode_cleaner
@@ -16,8 +15,8 @@ from salesrep_cleaner import sales_rep_cleaner
 from payment_cleaner import payment_methods_cleaner
 from shipping_cleaner import shipping_methods_cleaner
 from price_cleaner import price_type_cleaner
-from generate_results import generate_results
-from generate_output import generate_output
+from generate.generate_results import generate_results
+from generate.generate_output import generate_output
 from designer_id import DESIGNER_ID
 
 
