@@ -1,4 +1,5 @@
 # Import necessary modules...
+from connection import get_credentials, clear_credentials, query_read_only_prod
 from generate_dataframe import generate_dataframe
 from country_cleaner import country_cleaner
 from state_cleaner import state_cleaner
@@ -7,16 +8,20 @@ from address_cleaner import address_code_cleaner, address_cleaner, address_type_
 from city_cleaner import city_cleaner
 from store_cleaner import store_cleaner
 from email_cleaner import email_cleaner
-from queries import query_sales_reps, query_payment_methods, query_shipping_methods, query_price_types
+from queries import query_sales_reps, query_payment_methods, query_shipping_methods, query_price_types, \
+    query_customer_groups, query_company_number
+from company_number_cleaner import company_number_cleaner
+from customer_group_cleaner import customer_group_cleaner
 from salesrep_cleaner import sales_rep_cleaner
 from payment_cleaner import payment_methods_cleaner
 from shipping_cleaner import shipping_methods_cleaner
 from price_cleaner import price_type_cleaner
 from generate_results import generate_results
 from generate_output import generate_output
+from designer_id import DESIGNER_ID
 
 
-def pipeline_master(designer_id: int):
+def pipeline_master(designer_id: int = DESIGNER_ID):
     """Call to each of the cleaning functions in the right order and return nothing"""
 
     # Generate dataframe...
@@ -38,12 +43,16 @@ def pipeline_master(designer_id: int):
     query_payment_methods(designer_id)
     query_shipping_methods(designer_id)
     query_price_types(designer_id)
+    query_customer_groups(designer_id)
+    query_company_number(designer_id)
 
     # Validation with db data...
-    sales_rep_cleaner(data)
-    payment_methods_cleaner(data)
-    shipping_methods_cleaner(data)
-    price_type_cleaner(data)
+    sales_rep_cleaner(data, designer_id)
+    payment_methods_cleaner(data, designer_id)
+    shipping_methods_cleaner(data, designer_id)
+    price_type_cleaner(data, designer_id)
+    customer_group_cleaner(data, designer_id)
+    company_number_cleaner(data, designer_id)
 
     # Generate results flags...
     generate_results(data)
