@@ -11,6 +11,7 @@ def generate_dataframe():
 
     """
     # Change working directory to file inputs...
+    os.chdir(PATHS['path_input'])
     files = os.listdir(PATHS['path_input'])
 
     # Load original excel sheet into a pandas DataFrame...
