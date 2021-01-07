@@ -11,3 +11,8 @@ def df_to_object_type(df):
 def strip_df(df):
     """ Removes whitespaces in each dataframe object type column values. """
     return df.apply(lambda x: x.str.strip() if x.dtype == "object" else x)
+
+
+def strip_lst(lst):
+    """ Strips whitespaces from elements in a list"""
+    return [i.strip() for i in lst]
