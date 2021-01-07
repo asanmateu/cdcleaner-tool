@@ -1,9 +1,10 @@
 # Import necessary modules...
 from alerts import ALERT_TYPE
+from designer_id import DESIGNER_ID
 from queries import query_sales_reps
 
 
-def sales_rep_cleaner(data, designer_id: int):
+def sales_rep_cleaner(data, designer_id: int = DESIGNER_ID):
     """ Calls sales reps query function and validates sales reps for each row of the customer list. If the sales rep
     does not exist it leaves the cell empty and leaves an alert note for csm to set it up an request an update.
 
@@ -18,7 +19,8 @@ def sales_rep_cleaner(data, designer_id: int):
     for i, row in data.iterrows():
         reference_sales_rep = row['Sales Rep']
         # If input code or name are not found on prod then note an alert and set no default...
-        if (reference_sales_rep not in sales_reps_dict.keys()) and (reference_sales_rep not in sales_reps_dict.values()):
+        if (reference_sales_rep not in sales_reps_dict.keys()) and \
+                (reference_sales_rep not in sales_reps_dict.values()):
             data['ALERT'].iloc[i] = str(row['ALERT']) + f"{reference_sales_rep}" + ALERT_TYPE["sales_rep"]
             data['Sales Rep'].iloc[i] = ""
 
