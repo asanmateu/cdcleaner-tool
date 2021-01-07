@@ -1,16 +1,17 @@
 # Import prod connection modules
 from connection import query_read_only_prod
 from myutils import strip_df
+from designer_id import DESIGNER_ID
 
 
-def query_company_number(designer_id: int):
+def query_company_number(designer_id: int = DESIGNER_ID):
     """Takes designer id and retrieves active company number details for the desired
     designer ready for validation. """
 
     return
 
 
-def query_customer_groups(designer_id: int):
+def query_customer_groups(designer_id: int = DESIGNER_ID):
     """Takes designer id and retrieves active customer group name and code details for the desired
     designer ready for validation. """
 
@@ -30,7 +31,7 @@ def query_customer_groups(designer_id: int):
     return customer_groups_dict
 
 
-def query_price_types(designer_id: int):
+def query_price_types(designer_id: int = DESIGNER_ID):
     """ Take designer id and call prod to make a query that retrieves active price types
     for the specific designer id.
 
@@ -62,7 +63,7 @@ def query_price_types(designer_id: int):
     return default_price_tuple, wholesale_prices_dict, retail_prices_dict
 
 
-def query_sales_reps(designer_id: int):
+def query_sales_reps(designer_id: int = DESIGNER_ID):
     """ Take designer id and call prod to make a query that retrieves account users
     for the specific designer id.
 
@@ -83,7 +84,7 @@ def query_sales_reps(designer_id: int):
     return sales_reps_dict
 
 
-def query_payment_methods(designer_id: int):
+def query_payment_methods(designer_id: int = DESIGNER_ID):
     """ Take designer id and call prod to make a query that retrieves active payment methods
     for the specific designer id.
 
@@ -114,7 +115,7 @@ def query_payment_methods(designer_id: int):
     return duplicate_payment_dict, unique_payment_dict
 
 
-def query_shipping_methods(designer_id: int):
+def query_shipping_methods(designer_id: int = DESIGNER_ID):
     """ Take designer id and call prod to make a query that retrieves active shipping methods
     for the specific designer id.
 
@@ -125,7 +126,7 @@ def query_shipping_methods(designer_id: int):
 
     query = f"select dsm.code, sm.shipping_name from joor_web.designer_shipping_methods dsm " \
             f"join joor_web.shipping_methods sm on sm.id = dsm.shipping_method_id where " \
-            f"dsm.designer_id = {designer_id} and dpm.deleted = 0;"
+            f"dsm.designer_id = {designer_id} and dsm.deleted = 0;"
 
     # Extract DataFrame with designer's active payment methods...
     shipping_methods = query_read_only_prod(query)
