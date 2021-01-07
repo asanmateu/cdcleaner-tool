@@ -17,6 +17,8 @@ from shipping_cleaner import shipping_methods_cleaner
 from price_cleaner import price_type_cleaner
 from generate.generate_results import generate_results
 from generate.generate_output import generate_output
+from discount_cleaner import discount_cleaner
+from customer_code_cleaner import customer_code_cleaner
 from designer_id import DESIGNER_ID
 
 
@@ -27,6 +29,7 @@ def pipeline_master(designer_id: int = DESIGNER_ID):
     data = generate_dataframe()
 
     # Local validations...
+    customer_code_cleaner(data)
     country_cleaner(data)
     state_cleaner(data)
     zipcode_cleaner(data)
@@ -36,6 +39,7 @@ def pipeline_master(designer_id: int = DESIGNER_ID):
     city_cleaner(data)
     store_cleaner(data)
     email_cleaner(data)
+    discount_cleaner(data)
 
     # Retrieve data from database...
     query_sales_reps(designer_id)
@@ -58,7 +62,5 @@ def pipeline_master(designer_id: int = DESIGNER_ID):
 
     # Generate output files...
     generate_output(data)
-
-    # Send reports to google sheets API...
 
     return None
