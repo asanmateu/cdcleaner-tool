@@ -1,5 +1,6 @@
 # Import necessary modules...
 from library import re
+from myutils import strip_lst
 from errors import ERROR_TYPE
 from alerts import ALERT_TYPE
 from lengths import LIMITS
@@ -19,14 +20,14 @@ def email_cleaner(data):
             input_emails = re.findall(regex, str(row['Email']))
 
             # Trim whitespaces to clean input email format...
-            emails = [email.strip() for email in input_emails]
+            emails = strip_lst(input_emails)
 
             # Append valid email input to email column...
             data['Email'].iloc[i] = emails[0]
 
             # Append extra emails into additional emails column delimited with ","...
             additional_emails = ";".join(emails[1:])
-            data['Additional Emails'].iloc[i] = str(row['Additional Emails']) + additional_emails
+            data['Additional Emails'].iloc[i] = str(row['Additional Emails']) + ";" + additional_emails
 
             # Check there's only one left in email column otherwise there might be one not caught by regex..
             if str(row['Email']).count('@') >= 1:
