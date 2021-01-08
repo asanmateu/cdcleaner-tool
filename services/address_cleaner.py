@@ -1,5 +1,6 @@
 from addtypes import valid_types
 from errors import ERROR_TYPE
+from alerts import ALERT_TYPE
 from lengths import LIMITS
 
 
@@ -31,9 +32,10 @@ def address_cleaner(data):
         if row['Address 1'] == "":
             data['ERROR'].iloc[i] = str(row['ERROR']) + ERROR_TYPE['address_error']
 
-        # If Address 1 exceeds the character limit then note an error...
+        # If Address 1 exceeds the character limit then note an alert and remove the value...
         if len(str(row['Address 1'])) > LIMITS['address1']:
-            data['ERROR'].iloc[i] = str(row['ERROR']) + ERROR_TYPE['address1_length']
+            data['ALERT'].iloc[i] = str(row['ALERT']) + ALERT_TYPE['address1_length']
+            data['Address 1'].iloc[i] = ""
 
     return data
 

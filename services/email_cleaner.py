@@ -36,7 +36,9 @@ def email_cleaner(data):
         else:
             data['ALERT'].iloc[i] = str(row['ALERT']) + ALERT_TYPE['email_missing']
 
+        # If email field exceeds length limit after cleaning note alert and remove value...
         if len(str(row['Email'])) > LIMITS['email']:
-            data['ERROR'].iloc[i] = str(row['ERROR']) + ALERT_TYPE['email_length']
+            data['ALERT'].iloc[i] = str(row['ALERT']) + f"{row['Email']}" + ALERT_TYPE['email_length']
+            data['Email'].iloc[i] = ""
 
     return data

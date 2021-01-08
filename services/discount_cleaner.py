@@ -1,4 +1,4 @@
-from errors import ERROR_TYPE
+from alerts import ALERT_TYPE
 from lengths import LIMITS
 
 
@@ -10,8 +10,9 @@ def discount_cleaner(data):
         if row['Discount'].count('%') > 1:
             data['Discount'].iloc[i] = data['Discount'].iloc[i].strip('%')
 
-        # If length exceeds limit throw error...
+        # If length exceeds limit note an alert and remove the value...
         if len(str(row['Discount'])) > LIMITS['discount']:
-            data['ERROR'].iloc[i] = str(row['ERROR']) + ERROR_TYPE['discount_length']
+            data['ALERT'].iloc[i] = str(row['ALERT']) + f"{row['Discount']}" + ALERT_TYPE['discount_length']
+            data['Discount'].iloc[i] = ""
 
     return data

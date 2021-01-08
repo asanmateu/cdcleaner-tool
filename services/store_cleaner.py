@@ -1,6 +1,7 @@
 # Import necessary modules...
 from errors import ERROR_TYPE
 from lengths import LIMITS
+from alerts import ALERT_TYPE
 
 
 def store_cleaner(data):
@@ -18,8 +19,9 @@ def store_cleaner(data):
         else:
             data['ERROR'].iloc[i] = str(row['ERROR']) + ERROR_TYPE['store_error']
 
-        # If length exceeds the limit note an error...
+        # If length exceeds the limit note an alert and remove value...
         if len(str(row['Store Name'])) > LIMITS['store_name']:
-            data['ERROR'].iloc[i] = str(row['ERROR']) + ERROR_TYPE['store_length']
+            data['ALERT'].iloc[i] = str(row['ALERT']) + f"{row['Store Name']}" + ALERT_TYPE['store_length']
+            data['Store Name'].iloc[i] = ""
 
     return data

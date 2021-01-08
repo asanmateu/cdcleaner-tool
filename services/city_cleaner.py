@@ -1,5 +1,6 @@
 # Import necessary modules...
 from errors import ERROR_TYPE
+from alerts import ALERT_TYPE
 from lengths import LIMITS
 
 
@@ -11,9 +12,10 @@ def city_cleaner(data):
         if row['City'] == '':
             data['ERROR'].iloc[i] = str(row['ERROR']) + ERROR_TYPE['city_error']
 
-        # If city length exceeds character limit note an error...
+        # If city length exceeds character limit note an alert and remove the value...
         if len(str(row['City'])) > LIMITS['city']:
-            data['ERROR'].iloc[i] = str(row['ERROR']) + ERROR_TYPE['city_length']
+            data['ALERT'].iloc[i] = str(row['ALERT']) + f"{row['City']}" + ALERT_TYPE['city_length']
+            data['City'].iloc[i] = ""
 
     return data
 

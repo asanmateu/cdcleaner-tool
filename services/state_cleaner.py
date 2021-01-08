@@ -1,6 +1,7 @@
 # Import necessary modules...
 from states import state_countries, aus_states, usa_states, cad_states, jpn_states
 from errors import ERROR_TYPE
+from alerts import ALERT_TYPE
 from lengths import LIMITS
 
 
@@ -27,8 +28,9 @@ def state_cleaner(data):
                     ((reference_country == 'Japan') and (reference_state not in jpn_states.keys())):
                 data['ERROR'].iloc[i] = str(row['ERROR']) + f"{reference_state}: " + ERROR_TYPE['state_error']
 
-        # If length exceeds the limit note an error...
+        # If length exceeds the limit note an alert and remove the value...
         if len(str(row['State'])) > LIMITS['state']:
-            data['ERROR'].iloc[i] = str(row['ERROR']) + ERROR_TYPE['state_length']
+            data['ALERT'].iloc[i] = str(row['ALERT']) + f"{row['State']}" + ALERT_TYPE['state_length']
+            data['State'].iloc[i] = ""
 
     return data
