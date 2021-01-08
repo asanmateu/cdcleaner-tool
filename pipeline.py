@@ -8,7 +8,7 @@ from city_cleaner import city_cleaner
 from store_cleaner import store_cleaner
 from email_cleaner import email_cleaner
 from queries import query_sales_reps, query_payment_methods, query_shipping_methods, query_price_types, \
-    query_customer_groups, query_company_number
+    query_customer_groups, query_company_numbers
 from company_number_cleaner import company_number_cleaner
 from customer_group_cleaner import customer_group_cleaner
 from salesrep_cleaner import sales_rep_cleaner
@@ -19,6 +19,7 @@ from generate.generate_results import generate_results
 from generate.generate_output import generate_output
 from discount_cleaner import discount_cleaner
 from customer_code_cleaner import customer_code_cleaner
+from phone_cleaner import phone_cleaner
 from designer_id import DESIGNER_ID
 
 
@@ -38,6 +39,7 @@ def pipeline_master(designer_id: int = DESIGNER_ID):
     address_code_cleaner(data)
     city_cleaner(data)
     store_cleaner(data)
+    phone_cleaner(data)
     email_cleaner(data)
     discount_cleaner(data)
 
@@ -47,7 +49,7 @@ def pipeline_master(designer_id: int = DESIGNER_ID):
     query_shipping_methods(designer_id)
     query_price_types(designer_id)
     query_customer_groups(designer_id)
-    query_company_number(designer_id)
+    query_company_numbers(designer_id)
 
     # Validation with db data...
     sales_rep_cleaner(data, designer_id)
