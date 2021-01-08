@@ -1,14 +1,23 @@
 # Import prod connection modules
 from connection import query_read_only_prod
-from myutils import strip_df
+from myutils import strip_df, strip_lst
 from designer_id import DESIGNER_ID
 
 
-def query_company_number(designer_id: int = DESIGNER_ID):
+def query_company_numbers(designer_id: int = DESIGNER_ID):
     """Takes designer id and retrieves active company number details for the desired
     designer ready for validation. """
 
-    return
+    query = f"select name, code from joor_web.company_numbers where account_id={designer_id} and deleted=false;"
+
+    # Extract company number data for specific designer id...
+    company_number_data = query_read_only_prod(query)
+
+    # Set company number names and codes into separate lists
+    company_number_names = strip_lst(list(company_number_data['name']))
+    company_number_codes = strip_lst(list(company_number_data['code']))
+
+    return company_number_names, company_number_codes
 
 
 def query_customer_groups(designer_id: int = DESIGNER_ID):
@@ -135,7 +144,8 @@ def query_shipping_methods(designer_id: int = DESIGNER_ID):
     shipping_methods = strip_df(shipping_methods)
 
     # Divide duplicates and unique values into dictionaries to ease validation...
-    duplicate_shipping_methods = shipping_methods[shipping_methods.duplicated(subset=['code', 'shipping_name'], keep=False)]
+    duplicate_shipping_methods = shipping_methods[shipping_methods.duplicated(subset=['code', 'shipping_name'],
+                                                                              keep=False)]
     duplicate_shipping_dict = dict(zip(duplicate_shipping_methods['shipping_name'].astype(str),
                                        duplicate_shipping_methods['code'].astype(str)))
 
