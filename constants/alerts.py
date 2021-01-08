@@ -1,8 +1,15 @@
+from lengths import LIMITS
+
 # Alerts do not generate an omit but point out a possible error //////
 ALERT_TYPE = {
 
+    # VALUE ALERTS ////
+
     # Sales reps validation alerts
     "sales_rep": ": sales rep does not exist: none was assigned. /",
+
+    # Company number alert
+    "company_number_setup": ": company number provided not setup; none was assigned. /",
 
     # Customer group validation alerts
     "customer_group_name_required": ": group name required to use code; none was assigned. /",
@@ -35,5 +42,21 @@ ALERT_TYPE = {
 
     # Email validation alerts
     "email_missing": "No email address provided; no user will be created. /",
+
+
+    # LENGTH ALERTS ////
+
+    "customer_code_length": f": Customer code exceeds {LIMITS['customer_code']} characters. /",
+    "alias_length": f": Customer alias exceeds {LIMITS['customer_name']} characters. Value removed. /",
+    "address_code_length": f": Address code exceeds {LIMITS['address_code']} characters. Value removed. /",
+    "store_name_length": f": Store name exceeds {LIMITS['store_name']} characters. Value removed. /",
+    "address1_length": f": Address 1 exceeds {LIMITS['address_1']} characters. Value removed. /",
+    "city_length": f": City exceeds {LIMITS['city']} characters. Value removed. /",
+    "state_length": f": State exceeds {LIMITS['state']} characters. Value removed. /",
+    "zip_length": f": Zipcode exceeds {LIMITS['zip']} characters. Value removed. Value removed. /",
+    "phone_length": f":Phone exceeds {LIMITS['phone']} characters. Value removed. /",
+    "buyer_name_length": f": Buyer name exceeds {LIMITS['buyer_name']} characters. Value removed. /",
+    "email_length": f": Email exceeds {LIMITS['email']} characters. Value removed. /",
+    "discount_length": f": Discount exceeds {LIMITS['discount']} characters. Value removed. Value removed. /"
 
 }
