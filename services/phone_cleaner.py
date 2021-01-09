@@ -1,3 +1,4 @@
+from columns import PHONE, ALERT
 from alerts import ALERT_TYPE
 from lengths import LIMITS
 
@@ -8,8 +9,8 @@ def phone_cleaner(data):
 
     for i, row in data.iterrows():
         # If phone field exceed maximum character limit then note alert and remove value...
-        if len(str(row['Phone'])) > LIMITS['phone']:
-            data['ALERT'].iloc[i] = str(data['ALERT'].iloc[i]) + f"{row['Phone']}" + ALERT_TYPE['phone_length']
-            data['Phone'].iloc[i] = ""
+        if len(str(row[PHONE])) > LIMITS['phone']:
+            data[ALERT].iloc[i] = str(data[ALERT].iloc[i]) + f"{row[PHONE]}" + ALERT_TYPE['phone_length']
+            data[PHONE].iloc[i] = ""
 
     return data

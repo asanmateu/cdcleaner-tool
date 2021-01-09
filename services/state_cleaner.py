@@ -1,5 +1,6 @@
 # Import necessary modules...
 from states import state_countries, aus_states, usa_states, cad_states, jpn_states
+from columns import COUNTRY, STATE, ERROR, ALERT
 from errors import ERROR_TYPE
 from alerts import ALERT_TYPE
 from lengths import LIMITS
@@ -13,8 +14,8 @@ def state_cleaner(data):
         Use AFTER country column is clean.
     """
 
-    countries = [*map(lambda x: x.title(), data['Country'])]
-    states = [*map(lambda x: x.lower(), data['State'])]
+    countries = [*map(lambda x: x.title(), data[COUNTRY])]
+    states = [*map(lambda x: x.lower(), data[STATE])]
 
     for i, row in data.iterrows():
         reference_country = countries[i]
@@ -26,11 +27,11 @@ def state_cleaner(data):
                     ((reference_country == 'Canada') and (reference_state not in cad_states.keys())) or \
                     ((reference_country == 'Australia') and (reference_state not in aus_states.keys())) or \
                     ((reference_country == 'Japan') and (reference_state not in jpn_states.keys())):
-                data['ERROR'].iloc[i] = str(row['ERROR']) + f"{reference_state}: " + ERROR_TYPE['state_error']
+                data[ERROR].iloc[i] = str(row[ERROR]) + f"{reference_state}: " + ERROR_TYPE['state_error']
 
         # If length exceeds the limit note an alert and remove the value...
-        if len(str(row['State'])) > LIMITS['state']:
-            data['ALERT'].iloc[i] = str(row['ALERT']) + f"{row['State']}" + ALERT_TYPE['state_length']
-            data['State'].iloc[i] = ""
+        if len(str(row[STATE])) > LIMITS['state']:
+            data[ALERT].iloc[i] = str(row[ALERT]) + f"{row[STATE]}" + ALERT_TYPE['state_length']
+            data[STATE].iloc[i] = ""
 
     return data

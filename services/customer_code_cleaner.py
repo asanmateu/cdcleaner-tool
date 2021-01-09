@@ -1,3 +1,4 @@
+from columns import ERROR, CUSTOMER_CODE
 from errors import ERROR_TYPE
 from lengths import LIMITS
 
@@ -7,7 +8,7 @@ def customer_code_cleaner(data):
 
     for i, row in data.iterrows():
         # If input exceeds customer code character limit note an error...
-        if len(str(row['Customer Code'])) > LIMITS['customer_code']:
-            data['ERROR'].iloc[i] = str(row['ERROR']) + ERROR_TYPE['customer_code_length']
+        if len(str(row[CUSTOMER_CODE])) > LIMITS['customer_code']:
+            data[ERROR].iloc[i] = str(row[ERROR]) + ERROR_TYPE['customer_code_length']
 
     return data

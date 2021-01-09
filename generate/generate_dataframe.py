@@ -1,30 +1,26 @@
 from library import np, pd, os
-from paths import PATHS
+from paths import INPUT_PATH
 from myutils import strip_df, df_to_object_type
+from columns import RESULT, ALERT, ERROR
 
 
 def generate_dataframe():
-    """ Take input file and generate a DataFrame to clean and another one to append errors to.
+    """ Take input file and generate a DataFrame to clean and another one to append errors to. """
 
-    Notes:
-        First to execute.
-
-    """
     # Change working directory to file inputs...
-    os.chdir(PATHS['path_input'])
-    files = os.listdir(PATHS['path_input'])
+    os.chdir(INPUT_PATH)
 
     # Load original excel sheet into a pandas DataFrame...
-    data = pd.read_excel(files[1], na_values=['nan'])
+    data = pd.read_csv("customer_list_template.csv", na_values=['nan'])
 
     # Replace excel default null value with ""...
     data.replace('nan', np.nan, inplace=True)
     data.fillna("", inplace=True)
 
     # Add an empty 'ERROR', 'ALERT' and 'RESULT' column to original data DataFrame note flags...
-    data['RESULT'] = ""
-    data['ALERT'] = ""
-    data['ERROR'] = ""
+    data[RESULT] = ""
+    data[ALERT] = ""
+    data[ERROR] = ""
 
     # Convert data columns into object type...
     data = df_to_object_type(data)

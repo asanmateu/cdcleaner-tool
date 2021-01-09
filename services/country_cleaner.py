@@ -1,4 +1,5 @@
 # Necessary modules...
+from columns import ERROR, COUNTRY
 from countries import country_dict
 from errors import ERROR_TYPE
 
@@ -11,16 +12,16 @@ def country_cleaner(data):
     Notes:
         I recommend you use this one first.
     """
-    countries = [*map(lambda x: x.lower(), data['Country'])]
+    countries = [*map(lambda x: x.lower(), data[COUNTRY])]
 
     # Iterate over input country list sub with valid country...
     for i, row in data.iterrows():
         reference_country = countries[i]
         # If input country is not in valid entries dictionary keys then note invalid country error...
         if reference_country not in country_dict.keys():
-            data['ERROR'].iloc[i] = str(row['ERROR']) + f"{reference_country}: " + ERROR_TYPE['country_error']
+            data[ERROR].iloc[i] = str(row[ERROR]) + f"{reference_country}: " + ERROR_TYPE['country_error']
         # If input country is in valid country dictionary keys then replace it by the corresponding value...
         else:
-            data['Country'].iloc[i] = country_dict.get(reference_country)
+            data[COUNTRY].iloc[i] = country_dict.get(reference_country)
 
     return data
