@@ -1,4 +1,4 @@
-from environment_constants import SSH_USERNAME, SSH_PASSWORD, PROD_USERNAME, PROD_PASSWORD, DESIGNER_ID
+from environment_constants import SSH_USERNAME, SSH_PASSWORD, PROD_USERNAME, PROD_PASSWORD, DESIGNER
 from pipeline import pipeline_master
 from paths import OUTPUT_PATH
 from library import os
@@ -17,8 +17,8 @@ os.environ[PROD_USERNAME] = prod_username_value
 prod_password_value = input("Enter" + PROD_PASSWORD + ": ")
 os.environ[PROD_PASSWORD] = prod_password_value
 
-designer_id_value = input("Enter" + DESIGNER_ID + ": ")
-os.environ[DESIGNER_ID] = designer_id_value
+designer_id_value = input("Enter" + DESIGNER + ": ")
+os.environ[DESIGNER] = designer_id_value
 
 # Validate environment variables input to check if their type and if any is null...
 
