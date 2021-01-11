@@ -14,7 +14,8 @@ $ python executable.py
 
 ## Instructions
 
-1. Make sure you have docker installed: https://github.com/joor/dev/blob/master/README.md
+
 
 2. Request your credential to access `prod_ro`.
+
 
