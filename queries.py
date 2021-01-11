@@ -2,6 +2,7 @@
 from connection import query_read_only_prod
 from myutils import strip_df, strip_lst
 from designer_id import DESIGNER_ID
+from library import pd
 
 
 def query_company_numbers(designer_id: int = DESIGNER_ID):
@@ -82,6 +83,7 @@ def query_sales_reps(designer_id: int = DESIGNER_ID):
     # Query with f-string to insert designer id and close as string...
     query = f"select id, code, display_name from joor_web.accounts_users where account_id = {designer_id};"
     sales_reps = query_read_only_prod(query)
+    sales_reps = pd.DataFrame(sales_reps, columns=['code', 'display_name'], dtype=str)
 
     # Remove whitespaces...
     sales_reps = strip_df(sales_reps)
