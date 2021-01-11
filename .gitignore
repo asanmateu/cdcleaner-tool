@@ -1,2 +1,5 @@
 # Prod connection parametric table
-connection.py
+*.csv
+.idea
+*.xls
+*.xlsx

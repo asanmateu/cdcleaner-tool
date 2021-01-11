@@ -2,6 +2,7 @@
 from connection import query_read_only_prod
 from myutils import strip_df, strip_lst
 from designer_id import DESIGNER_ID
+from library import pd
 
 
 def query_company_numbers(designer_id: int = DESIGNER_ID):
@@ -60,7 +61,7 @@ def query_price_types(designer_id: int = DESIGNER_ID):
     price_types = strip_df(price_types)
 
     # Sort extracted DataFrame by creation data to ease default...
-    price_types = price_types.sort_values(by='created', ascending=True).reset_index(drop=True)
+    price_types = price_types.sort_values(by='created', ascending=False).reset_index(drop=True)
 
     # Store first creation as default value
     default_price_tuple = tuple(price_types.iloc[0][:3])
@@ -82,6 +83,7 @@ def query_sales_reps(designer_id: int = DESIGNER_ID):
     # Query with f-string to insert designer id and close as string...
     query = f"select id, code, display_name from joor_web.accounts_users where account_id = {designer_id};"
     sales_reps = query_read_only_prod(query)
+    sales_reps = pd.DataFrame(sales_reps, columns=['code', 'display_name'], dtype=str)
 
     # Remove whitespaces...
     sales_reps = strip_df(sales_reps)

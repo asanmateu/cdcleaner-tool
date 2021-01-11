@@ -34,7 +34,7 @@ def address_cleaner(data):
             data[ERROR].iloc[i] = str(row[ERROR]) + ERROR_TYPE['address_error']
 
         # If Address 1 exceeds the character limit then note an alert and remove the value...
-        if len(str(row[ADDRESS_1])) > LIMITS['address1']:
+        if len(str(row[ADDRESS_1])) > LIMITS['address_1']:
             data[ALERT].iloc[i] = str(row[ALERT]) + ALERT_TYPE['address1_length']
             data[ADDRESS_1].iloc[i] = ""
 

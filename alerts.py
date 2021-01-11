@@ -57,6 +57,6 @@ ALERT_TYPE = {
     "phone_length": f":Phone exceeds {LIMITS['phone']} characters. Value removed. /",
     "buyer_name_length": f": Buyer name exceeds {LIMITS['buyer_name']} characters. Value removed. /",
     "email_length": f": Email exceeds {LIMITS['email']} characters. Value removed. /",
-    "discount_length": f": Discount exceeds {LIMITS['discount']} characters. Value removed. Value removed. /"
+    "discount_length": f": Discount exceeds {LIMITS['discount']} characters. Value removed. /"
 
 }

@@ -17,7 +17,7 @@ def store_cleaner(data):
         elif row[STORE_NAME] != "" and row[CUSTOMER_NAME] == "":
             data[STORE_NAME].iloc[i] = row[STORE_NAME]
         # If no customer name nor store name then note an error...
-        else:
+        elif row[STORE_NAME] == "" and row[CUSTOMER_NAME] == "":
             data[ERROR].iloc[i] = str(row[ERROR]) + ERROR_TYPE['store_error']
 
         # If length exceeds the limit note an alert and remove value...
