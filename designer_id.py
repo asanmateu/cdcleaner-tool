@@ -3,4 +3,4 @@ from library import os
 
 
 # Get specific designer id from environment variables...
-DESIGNER_ID = 191657
+designer_id = os.environ.get(DESIGNER)
