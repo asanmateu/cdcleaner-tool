@@ -16,6 +16,7 @@ os.environ[PROD_USERNAME] = prod_username_value
 
 prod_password_value = input(PROD_PASSWORD + ": ")
 os.environ[PROD_PASSWORD] = prod_password_value
+"""
 
 designer_id_value = input(DESIGNER + ": ")
 os.environ[DESIGNER] = designer_id_value
@@ -24,7 +25,7 @@ os.environ[DESIGNER] = designer_id_value
 
 
 print('\n Cleaning customer list...')
-"""
+
 
 # Run pipeline master function...
 pipeline_master()
