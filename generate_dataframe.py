@@ -11,7 +11,7 @@ def generate_dataframe():
     os.chdir(INPUT_PATH)
 
     # Load original excel sheet into a pandas DataFrame...
-    data = pd.read_csv("customer_list_template.csv", na_values=['nan'])
+    data = pd.read_excel("customer_list_template.csv", na_values=['nan'])
 
     # Replace excel default null value with ""...
     data.replace('nan', np.nan, inplace=True)
