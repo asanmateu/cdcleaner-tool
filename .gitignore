@@ -1,2 +1,4 @@
 # Prod connection parametric table
 connection.py
+*.csv
+.idea
