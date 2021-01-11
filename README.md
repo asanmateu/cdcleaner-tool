@@ -14,7 +14,7 @@ $ python executable.py
 
 ## Instructions
 
-
+1. Make sure you have installed Docker.
 
 2. Request your credential to access `prod_ro`.
 
