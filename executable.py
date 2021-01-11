@@ -3,7 +3,7 @@ from pipeline import pipeline_master
 from paths import OUTPUT_PATH
 from library import os
 
-
+"""
 # Get environment variables and then run the script...
 ssh_username_value = input(SSH_USERNAME + ": ")
 os.environ[SSH_USERNAME] = ssh_username_value
@@ -24,7 +24,7 @@ os.environ[DESIGNER] = designer_id_value
 
 
 print('\n Cleaning customer list...')
-
+"""
 
 # Run pipeline master function...
 pipeline_master()
