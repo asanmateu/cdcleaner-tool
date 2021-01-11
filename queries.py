@@ -61,7 +61,7 @@ def query_price_types(designer_id: int = DESIGNER_ID):
     price_types = strip_df(price_types)
 
     # Sort extracted DataFrame by creation data to ease default...
-    price_types = price_types.sort_values(by='created', ascending=True).reset_index(drop=True)
+    price_types = price_types.sort_values(by='created', ascending=False).reset_index(drop=True)
 
     # Store first creation as default value
     default_price_tuple = tuple(price_types.iloc[0][:3])
