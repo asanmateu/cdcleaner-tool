@@ -31,7 +31,7 @@ def email_cleaner(data):
             data[ADDITIONAL_EMAILS].iloc[i] = str(row[ADDITIONAL_EMAILS]) + ";" + additional_emails
 
             # Check there's only one left in email column otherwise there might be one not caught by regex..
-            if str(row[EMAIL]).count('@') >= 1:
+            if str(row[EMAIL]).count('@') > 1:
                 data[ERROR].iloc[i] = str(row[ERROR]) + ERROR_TYPE['email_error']
 
         else:
