@@ -5,23 +5,22 @@ from library import os
 
 
 # Get environment variables and then run the script...
-ssh_username_value = input("Enter" + SSH_USERNAME + ": ")
+ssh_username_value = input(SSH_USERNAME + ": ")
 os.environ[SSH_USERNAME] = ssh_username_value
 
-ssh_password_value = input("Enter" + SSH_PASSWORD + ": ")
+ssh_password_value = input(SSH_PASSWORD + ": ")
 os.environ[SSH_PASSWORD] = ssh_password_value
 
-prod_username_value = input("Enter" + PROD_USERNAME + ": ")
+prod_username_value = input(PROD_USERNAME + ": ")
 os.environ[PROD_USERNAME] = prod_username_value
 
-prod_password_value = input("Enter" + PROD_PASSWORD + ": ")
+prod_password_value = input(PROD_PASSWORD + ": ")
 os.environ[PROD_PASSWORD] = prod_password_value
 
-designer_id_value = input("Enter" + DESIGNER + ": ")
+designer_id_value = input(DESIGNER + ": ")
 os.environ[DESIGNER] = designer_id_value
 
 # Validate environment variables input to check if their type and if any is null...
-
 
 
 print('\n Cleaning customer list...')
