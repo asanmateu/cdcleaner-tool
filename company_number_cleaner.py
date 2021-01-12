@@ -16,11 +16,13 @@ def company_number_cleaner(data, designer_id: int = DESIGNER_ID):
 
         # Check if input element is either on the list of codes or the list of names
         for i, row in data.iterrows():
-            # If value is not in either list then flag an alert and remove the value...
-            if (row[COMPANY_NUMBER] not in company_number_names) and \
-                    (row[COMPANY_NUMBER] not in company_number_codes):
-                data[ALERT].iloc[i] = str(row[ALERT]) + \
-                                        f"{row[COMPANY_NUMBER]}" + ALERT_TYPE['company_number_setup']
-                data[COMPANY_NUMBER].iloc[i] = ""
+            # If input value is not null:
+            if row[COMPANY_NUMBER] != "":
+                # If value is not in either list then flag an alert and remove the value...
+                if (row[COMPANY_NUMBER] not in company_number_names) and \
+                        (row[COMPANY_NUMBER] not in company_number_codes):
+                    data[ALERT].iloc[i] = str(row[ALERT]) + \
+                                            f"{row[COMPANY_NUMBER]}" + ALERT_TYPE['company_number_setup']
+                    data[COMPANY_NUMBER].iloc[i] = ""
 
     return data
