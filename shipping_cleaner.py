@@ -4,6 +4,7 @@ from designer_id import DESIGNER_ID
 from queries import query_shipping_methods
 from columns import SHIPPING_NAME, SHIPPING_CODE, ALERT
 
+
 def shipping_methods_cleaner(data, designer_id: int = DESIGNER_ID):
     """ Validates shipping methods by checking that there are no duplicate names. If it does contain duplicates or
     if it the shipping method does not exist it will leave an alert note for csm to take the necessary action.

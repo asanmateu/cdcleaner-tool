@@ -4,7 +4,7 @@ from columns import ERROR, RESULT, ALERT
 
 
 # Note final result per row
-def generate_results(data):
+def generate_results(df):
     """ Populate results column in line with overall inputs in alert and error columns.
 
     Notes:
@@ -12,15 +12,15 @@ def generate_results(data):
     """
 
     # Populate omissions with files containing errors...
-    for i, row in data.iterrows():
+    for i, row in df.iterrows():
         if row[ERROR] != "":
             # Files containing at least one error are denied
-            data[RESULT].iloc[i] = RESULT_TYPE['denied']
+            df[RESULT].iloc[i] = RESULT_TYPE['denied']
         elif row[ALERT] != "":
             # Files containing only alerts are defaulted but processed
-            data[RESULT].iloc[i] = RESULT_TYPE['defaulted']
+            df[RESULT].iloc[i] = RESULT_TYPE['defaulted']
         else:
             # Files with no errors are approved to be processed
-            data[RESULT].iloc[i] = RESULT_TYPE['approved']
+            df[RESULT].iloc[i] = RESULT_TYPE['approved']
 
-    return data
+    return df

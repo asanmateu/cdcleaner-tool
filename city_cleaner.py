@@ -5,18 +5,18 @@ from alerts import ALERT_TYPE
 from lengths import LIMITS
 
 
-def city_cleaner(data):
+def city_cleaner(df):
     """ Note an error if city input is empty otherwise pass. """
 
-    for i, row in data.iterrows():
+    for i, row in df.iterrows():
         # If city is empty note an error for invalid city input...
         if row[CITY] == '':
-            data[ERROR].iloc[i] = str(row[ERROR]) + ERROR_TYPE['city_error']
+            df[ERROR].iloc[i] = str(row[ERROR]) + ERROR_TYPE['city_error']
 
         # If city length exceeds character limit note an alert and remove the value...
         if len(str(row[CITY])) > LIMITS['city']:
-            data[ALERT].iloc[i] = str(row[ALERT]) + f"{row[CITY]}" + ALERT_TYPE['city_length']
-            data[CITY].iloc[i] = ""
+            df[ALERT].iloc[i] = str(row[ALERT]) + f"{row[CITY]}" + ALERT_TYPE['city_length']
+            df[CITY].iloc[i] = ""
 
-    return data
+    return df
 
