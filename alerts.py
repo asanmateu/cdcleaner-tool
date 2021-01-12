@@ -5,6 +5,9 @@ ALERT_TYPE = {
 
     # VALUE ALERTS ////
 
+    # Address validation alerts
+    "address_1_missing": "Inserting address 1 is highly recommended to ensure accurate matching, /",
+
     # Sales reps validation alerts
     "sales_rep": ": sales rep does not exist: none was assigned. /",
 
@@ -45,10 +48,11 @@ ALERT_TYPE = {
 
 
     # LENGTH ALERTS ////
-
     "customer_code_length": f": Customer code exceeds {LIMITS['customer_code']} characters. /",
     "alias_length": f": Customer alias exceeds {LIMITS['customer_name']} characters. Value removed. /",
     "address_code_length": f": Address code exceeds {LIMITS['address_code']} characters. Value removed. /",
+    "address_1_length": f": Address 1 exceeds {LIMITS['address_1']} characters. Value removed. /",
+    "address_2_length": f": Address 2 exceeds {LIMITS['address_2']} characters. Value removed. /",
     "store_name_length": f": Store name exceeds {LIMITS['store_name']} characters. Value removed. /",
     "address1_length": f": Address 1 exceeds {LIMITS['address_1']} characters. Value removed. /",
     "city_length": f": City exceeds {LIMITS['city']} characters. Value removed. /",
