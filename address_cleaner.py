@@ -26,17 +26,21 @@ def address_type_cleaner(data):
 
 
 def address_cleaner(data):
-    """ Address 1 cannot be empty, if it is notes error. """
+    """ Address 1 cannot be empty, if it is notes error. Also, validates Address 1 and 2 lengths
+    throwing an alert if lengths are exceeded. """
 
     for i, row in data.iterrows():
         # If address 1 is empty then note an error...
         if row[ADDRESS_1] == "":
-            data[ERROR].iloc[i] = str(row[ERROR]) + ERROR_TYPE['address_error']
+            data[ALERT].iloc[i] = str(row[ALERT]) + ALERT_TYPE['address_1_missing']
 
         # If Address 1 exceeds the character limit then note an alert and remove the value...
         if len(str(row[ADDRESS_1])) > LIMITS['address_1']:
-            data[ALERT].iloc[i] = str(row[ALERT]) + ALERT_TYPE['address1_length']
-            data[ADDRESS_1].iloc[i] = ""
+            data[ERROR].iloc[i] = str(row[ERROR]) + f"{row[ADDRESS_1]}" + ERROR_TYPE['address_1_length']
+
+        # If Address 1 exceeds the character limit then note an alert and remove the value...
+        if len(str(row[ADDRESS_2])) > LIMITS['address_2']:
+            data[ERROR].iloc[i] = str(row[ERROR]) + f"{row[ADDRESS_2]}" + ERROR_TYPE['address_2_length']
 
     return data
 
