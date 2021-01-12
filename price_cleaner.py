@@ -52,23 +52,23 @@ def price_type_cleaner(df, designer_id: int = DESIGNER_ID):
             elif (wholesale_prices_dict.get(reference_label) == reference_wholesale_currency) and \
                     (retail_prices_dict.get(reference_label) != reference_retail_currency):
                 df[ALERT].iloc[i] = str(row[ALERT]) + f"{reference_retail_currency}" + \
-                                        ALERT_TYPE['retail_currency_match']
+                                    ALERT_TYPE['retail_currency_match']
                 df[RETAIL_CURRENCY].iloc[i] = retail_prices_dict.get(reference_label)
 
             # If wholesale currency does not match label then correct it...
             elif (wholesale_prices_dict.get(reference_label) != reference_wholesale_currency) and \
                     (retail_prices_dict.get(reference_label) == reference_retail_currency):
                 df[ALERT].iloc[i] = str(row[ALERT]) + f"{reference_wholesale_currency}" + \
-                                        ALERT_TYPE['wholesale_currency_match']
+                                    ALERT_TYPE['wholesale_currency_match']
                 df[WHOLESALE_CURRENCY].iloc[i] = wholesale_prices_dict.get(reference_label)
 
             # If both currencies do not match the label then correct both...
             elif (wholesale_prices_dict.get(reference_label) != reference_wholesale_currency) and \
                     (retail_prices_dict.get(reference_label) != reference_retail_currency):
                 df[ALERT].iloc[i] = str(row[ALERT]) + f"{reference_retail_currency}" + \
-                                        ALERT_TYPE['retail_currency_match']
+                                    ALERT_TYPE['retail_currency_match']
                 df[ALERT].iloc[i] = str(row[ALERT]) + f"{reference_wholesale_currency}" + \
-                                        ALERT_TYPE['wholesale_currency_match']
+                                    ALERT_TYPE['wholesale_currency_match']
                 df[RETAIL_CURRENCY].iloc[i] = retail_prices_dict.get(reference_label)
                 df[WHOLESALE_CURRENCY].iloc[i] = wholesale_prices_dict.get(reference_label)
 
