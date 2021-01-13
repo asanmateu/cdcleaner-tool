@@ -1,6 +1,3 @@
-from lengths import LIMITS
-
-
 # Declaration of constant error variables...
 ERROR_TYPE = {
 

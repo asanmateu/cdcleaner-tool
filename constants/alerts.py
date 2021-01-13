@@ -1,4 +1,4 @@
-from lengths import LIMITS
+from constants import LIMITS
 
 # Alerts do not generate an omit but point out a possible error //////
 ALERT_TYPE = {

@@ -1,5 +1,5 @@
 from pipeline import pipeline_master
-from paths import OUTPUT_PATH
+from constants import OUTPUT_PATH
 
 
 print('\n Cleaning customer list...')

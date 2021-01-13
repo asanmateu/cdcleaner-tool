@@ -1,8 +1,5 @@
 # Import necessary modules...
-from columns import STORE_NAME, CUSTOMER_NAME, ALERT, ERROR
-from errors import ERROR_TYPE
-from lengths import LIMITS
-from alerts import ALERT_TYPE
+from constants import STORE_NAME, CUSTOMER_NAME, ALERT, ERROR, ERROR_TYPE, LIMITS, ALERT_TYPE
 
 
 def store_cleaner(df):

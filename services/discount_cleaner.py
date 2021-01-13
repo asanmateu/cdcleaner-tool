@@ -1,6 +1,4 @@
-from columns import DISCOUNT, ALERT
-from alerts import ALERT_TYPE
-from lengths import LIMITS
+from constants import DISCOUNT, ALERT, ALERT_TYPE, LIMITS
 
 
 def discount_cleaner(df):

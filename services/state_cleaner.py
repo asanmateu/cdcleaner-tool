@@ -1,9 +1,6 @@
 # Import necessary modules...
-from states import state_countries, aus_states, usa_states, cad_states, jpn_states
-from columns import COUNTRY, STATE, ERROR, ALERT
-from errors import ERROR_TYPE
-from alerts import ALERT_TYPE
-from lengths import LIMITS
+from dictionaries import state_countries, aus_states, usa_states, cad_states, jpn_states
+from constants import COUNTRY, STATE, ERROR, ALERT, ERROR_TYPE, ALERT_TYPE, LIMITS
 
 
 # Function to validate and clean states for required countries...

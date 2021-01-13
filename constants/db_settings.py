@@ -1,4 +1,4 @@
-from library import getpass
+from constants import getpass
 
 # Set up tunnel connection to prod with querying functions...
 CONNECTION_SETTINGS = {

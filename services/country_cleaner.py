@@ -1,7 +1,6 @@
 # Necessary modules...
-from columns import ERROR, COUNTRY
-from countries import country_dict
-from errors import ERROR_TYPE
+from constants import ERROR, COUNTRY, ERROR_TYPE
+from dictionaries import country_dict
 
 
 # Function to validate and clean country column from input DataFrame...

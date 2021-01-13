@@ -1,26 +1,13 @@
 # Import necessary modules...
-from generate_dataframe import generate_dataframe
-from country_cleaner import country_cleaner
-from state_cleaner import state_cleaner
-from zipcode_cleaner import zipcode_cleaner
-from address_cleaner import address_code_cleaner, address_cleaner, address_type_cleaner
-from city_cleaner import city_cleaner
-from store_cleaner import store_cleaner
-from email_cleaner import email_cleaner
-from queries import query_sales_reps, query_payment_methods, query_shipping_methods, query_price_types, \
+from constants import DESIGNER_ID
+from generate import generate_dataframe, generate_output, generate_results
+from services import country_cleaner, state_cleaner, zipcode_cleaner, city_cleaner, store_cleaner, \
+    email_cleaner, address_code_cleaner, address_cleaner, address_type_cleaner, discount_cleaner, \
+    customer_code_cleaner, phone_cleaner
+from prod import query_sales_reps, query_payment_methods, query_shipping_methods, query_price_types, \
     query_customer_groups, query_company_numbers
-from company_number_cleaner import company_number_cleaner
-from customer_group_cleaner import customer_group_cleaner
-from salesrep_cleaner import sales_rep_cleaner
-from payment_cleaner import payment_methods_cleaner
-from shipping_cleaner import shipping_methods_cleaner
-from price_cleaner import price_type_cleaner
-from generate_results import generate_results
-from generate_output import generate_output
-from discount_cleaner import discount_cleaner
-from customer_code_cleaner import customer_code_cleaner
-from phone_cleaner import phone_cleaner
-from designer_id import DESIGNER_ID
+from services.callprod import company_number_cleaner, customer_group_cleaner, sales_rep_cleaner, \
+    payment_methods_cleaner, shipping_methods_cleaner, price_type_cleaner
 
 
 def pipeline_master(designer_id: int = DESIGNER_ID):

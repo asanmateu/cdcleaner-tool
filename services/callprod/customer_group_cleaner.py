@@ -1,7 +1,5 @@
-from queries import query_customer_groups
-from alerts import ALERT_TYPE
-from designer_id import DESIGNER_ID
-from columns import CUSTOMER_GROUP_NAME, CUSTOMER_GROUP_CODE, ALERT
+from prod import query_customer_groups
+from constants import ALERT_TYPE, DESIGNER_ID, CUSTOMER_GROUP_NAME, CUSTOMER_GROUP_CODE, ALERT
 
 
 def customer_group_cleaner(df, designer_id: int = DESIGNER_ID):

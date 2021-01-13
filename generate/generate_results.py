@@ -1,6 +1,5 @@
 # Import necessary modules...
-from results import RESULT_TYPE
-from columns import ERROR, RESULT, ALERT
+from constants import RESULT_TYPE, ERROR, RESULT, ALERT
 
 
 # Note final result per row

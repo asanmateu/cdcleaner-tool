@@ -1,5 +1,5 @@
 # Import necessary modules...
-from paths import OUTPUT_RESULT_FILE_PATH
+from constants import OUTPUT_RESULT_FILE_PATH
 
 
 # Generate the outputs into the output files directory

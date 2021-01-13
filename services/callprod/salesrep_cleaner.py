@@ -1,8 +1,6 @@
 # Import necessary modules...
-from alerts import ALERT_TYPE
-from designer_id import DESIGNER_ID
-from queries import query_sales_reps
-from columns import SALES_REP, ALERT
+from constants import ALERT_TYPE, DESIGNER_ID, SALES_REP, ALERT
+from prod import query_sales_reps
 
 
 def sales_rep_cleaner(df, designer_id: int = DESIGNER_ID):

@@ -1,7 +1,5 @@
-from library import np, pd, os
-from paths import INPUT_PATH
-from myutils import strip_df, df_to_object_type
-from columns import RESULT, ALERT, ERROR
+from constants import np, pd, os, INPUT_PATH, RESULT, ALERT, ERROR
+from utils import strip_df, df_to_object_type
 
 
 def generate_dataframe():

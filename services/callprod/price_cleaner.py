@@ -1,8 +1,7 @@
 # Import necessary modules...
-from queries import query_price_types
-from designer_id import DESIGNER_ID
-from alerts import ALERT_TYPE
-from columns import PRICE_CURRENCY, PRICE_LABEL, WHOLESALE_CURRENCY, RETAIL_CURRENCY, ALERT
+from constants import DESIGNER_ID, ALERT_TYPE, PRICE_CURRENCY, PRICE_LABEL, WHOLESALE_CURRENCY, \
+    RETAIL_CURRENCY, ALERT
+from prod import query_price_types
 
 
 def price_type_cleaner(df, designer_id: int = DESIGNER_ID):

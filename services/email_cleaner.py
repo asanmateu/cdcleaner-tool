@@ -1,10 +1,6 @@
 # Import necessary modules...
-from columns import EMAIL, ALERT, ERROR, ADDITIONAL_EMAILS
-from library import re
-from myutils import strip_lst
-from errors import ERROR_TYPE
-from alerts import ALERT_TYPE
-from lengths import LIMITS
+from constants import EMAIL, ALERT, ERROR, ADDITIONAL_EMAILS, ERROR_TYPE, ALERT_TYPE, LIMITS, re
+from utils import strip_lst
 
 
 def email_cleaner(df):

@@ -1,8 +1,6 @@
 # Import necessary modules...
-from alerts import ALERT_TYPE
-from designer_id import DESIGNER_ID
-from queries import query_payment_methods
-from columns import PAYMENT_CODE, PAYMENT_NAME, ALERT
+from constants import ALERT_TYPE, DESIGNER_ID, PAYMENT_CODE, PAYMENT_NAME, ALERT
+from prod import query_payment_methods
 
 
 def payment_methods_cleaner(df, designer_id: int = DESIGNER_ID):

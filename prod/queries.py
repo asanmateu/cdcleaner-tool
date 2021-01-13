@@ -1,8 +1,7 @@
 # Import prod connection modules
-from connection import query_read_only_prod
-from myutils import strip_df, strip_lst
-from designer_id import DESIGNER_ID
-from library import pd
+from prod import query_read_only_prod
+from utils import strip_df, strip_lst
+from constants import DESIGNER_ID, pd
 
 
 def query_company_numbers(designer_id: int = DESIGNER_ID):

@@ -1,8 +1,6 @@
-from addtypes import valid_types
-from errors import ERROR_TYPE
-from alerts import ALERT_TYPE
-from columns import ERROR, ALERT, ADDRESS_TYPE, ADDRESS_1, ADDRESS_2, ADDRESS_CODE, STORE_NAME, CUSTOMER_CODE
-from lengths import LIMITS
+from dictionaries import valid_types
+from constants import ERROR_TYPE, ALERT_TYPE, ERROR, ALERT, ADDRESS_TYPE, ADDRESS_1, ADDRESS_2, \
+    ADDRESS_CODE, STORE_NAME, CUSTOMER_CODE, LIMITS
 
 
 def address_type_cleaner(df):

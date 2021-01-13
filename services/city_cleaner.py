@@ -1,8 +1,5 @@
 # Import necessary modules...
-from columns import CITY, ERROR, ALERT
-from errors import ERROR_TYPE
-from alerts import ALERT_TYPE
-from lengths import LIMITS
+from constants import CITY, ERROR, ALERT, ERROR_TYPE, ALERT_TYPE, LIMITS
 
 
 def city_cleaner(df):

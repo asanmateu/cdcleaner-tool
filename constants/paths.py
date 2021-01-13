@@ -1,4 +1,4 @@
-from library import os
+from constants import os
 
 WORKING_DIR = os.getcwd()
 INPUT_PATH = WORKING_DIR + "/files/input"

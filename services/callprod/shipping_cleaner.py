@@ -1,8 +1,6 @@
 # Import necessary modules...
-from alerts import ALERT_TYPE
-from designer_id import DESIGNER_ID
-from queries import query_shipping_methods
-from columns import SHIPPING_NAME, SHIPPING_CODE, ALERT
+from constants import ALERT_TYPE, DESIGNER_ID, SHIPPING_NAME, SHIPPING_CODE, ALERT
+from prod import query_shipping_methods
 
 
 def shipping_methods_cleaner(data, designer_id: int = DESIGNER_ID):

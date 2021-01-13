@@ -1,6 +1,4 @@
-from columns import PHONE, ALERT
-from alerts import ALERT_TYPE
-from lengths import LIMITS
+from constants import PHONE, ALERT, ALERT_TYPE, LIMITS
 
 
 def phone_cleaner(df):

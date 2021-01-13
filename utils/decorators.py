@@ -1,5 +1,4 @@
-from functools import wraps
-import time
+from constants import wraps, time
 
 
 def timer(func):

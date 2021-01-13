@@ -1,8 +1,5 @@
 # Import necessary modules...
-from errors import ERROR_TYPE
-from alerts import ALERT_TYPE
-from lengths import LIMITS
-from columns import ZIP, COUNTRY, ALERT, ERROR
+from constants import ERROR_TYPE, ALERT_TYPE, LIMITS, ZIP, COUNTRY, ALERT, ERROR
 
 
 def zipcode_cleaner(df):

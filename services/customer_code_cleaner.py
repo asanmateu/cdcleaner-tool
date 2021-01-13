@@ -1,6 +1,4 @@
-from columns import ERROR, CUSTOMER_CODE
-from errors import ERROR_TYPE
-from lengths import LIMITS
+from constants import ERROR, CUSTOMER_CODE, ERROR_TYPE, LIMITS
 
 
 def customer_code_cleaner(df):

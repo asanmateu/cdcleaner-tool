@@ -1,7 +1,5 @@
-from queries import query_company_numbers
-from columns import COMPANY_NUMBER, ALERT
-from designer_id import DESIGNER_ID
-from alerts import ALERT_TYPE
+from prod import query_company_numbers
+from constants import COMPANY_NUMBER, ALERT, DESIGNER_ID, ALERT_TYPE
 
 
 def company_number_cleaner(df, designer_id: int = DESIGNER_ID):
