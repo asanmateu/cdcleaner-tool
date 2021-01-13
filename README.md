@@ -4,12 +4,6 @@ The purpose of this script is to speed up the process of cleaning manual custome
 
 The script features a range of functions with different functionality that clean and flag errors and alers for each of the template columns.
 
-It's launched from:
-```
-$ cd desktop/joor-cd-cleaner
-
-$ python3 exe.py
-```
 
 
 ## Installation  🛠  📡
