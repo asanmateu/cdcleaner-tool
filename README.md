@@ -1,4 +1,4 @@
-# Customer Data Cleaner
+# CD Customer List Cleaner - JDT Tool
 
 The purpose of this script is to speed up the process of cleaning manual customer data templates.
 
