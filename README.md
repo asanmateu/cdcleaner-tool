@@ -2,7 +2,7 @@
 
 The purpose of this script is to speed up the process of cleaning manual customer data templates.
 
-The script features a range of functions with different functionality that clean and flag errors and alers for each of the template columns.
+The script features a range of functions with different functionality that clean each of the template columns.
 
 
 
