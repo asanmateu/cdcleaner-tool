@@ -3,11 +3,10 @@ from constants import DESIGNER_ID
 from generate import generate_dataframe, generate_output, generate_results
 from services import country_cleaner, state_cleaner, zipcode_cleaner, city_cleaner, store_cleaner, \
     email_cleaner, address_code_cleaner, address_cleaner, address_type_cleaner, discount_cleaner, \
-    customer_code_cleaner, phone_cleaner
+    customer_code_cleaner, phone_cleaner, sales_rep_cleaner, payment_methods_cleaner, \
+    shipping_methods_cleaner, price_type_cleaner, company_number_cleaner, customer_group_cleaner
 from prod import query_sales_reps, query_payment_methods, query_shipping_methods, query_price_types, \
     query_customer_groups, query_company_numbers
-from services.callprod import company_number_cleaner, customer_group_cleaner, sales_rep_cleaner, \
-    payment_methods_cleaner, shipping_methods_cleaner, price_type_cleaner
 
 
 def pipeline_master(designer_id: int = DESIGNER_ID):
