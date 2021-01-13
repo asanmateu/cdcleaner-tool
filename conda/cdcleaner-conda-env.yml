@@ -1,0 +1,5 @@
+name: cdcleaner-conda-env
+channels:
+  - conda-forge
+  - defaults
+prefix: /opt/anaconda3/envs/cdcleaner-conda-env
