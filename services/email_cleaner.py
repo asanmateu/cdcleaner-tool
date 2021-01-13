@@ -34,7 +34,7 @@ def email_cleaner(df):
             df[ALERT].iloc[i] = str(row[ALERT]) + ALERT_TYPE['email_missing']
 
         # If email field exceeds length limit after cleaning note alert and remove value...
-        if len(str(row[EMAIL])) > LIMITS['email']:
+        if len(str(row[EMAIL])) > LIMITS[EMAIL]:
             df[ALERT].iloc[i] = str(row[ALERT]) + f"{row[EMAIL]}" + ALERT_TYPE['email_length']
             df[EMAIL].iloc[i] = ""
 

@@ -7,7 +7,7 @@ def phone_cleaner(df):
 
     for i, row in df.iterrows():
         # If phone field exceed maximum character limit then note alert and remove value...
-        if len(str(row[PHONE])) > LIMITS['phone']:
+        if len(str(row[PHONE])) > LIMITS[PHONE]:
             df[ALERT].iloc[i] = str(df[ALERT].iloc[i]) + f"{row[PHONE]}" + ALERT_TYPE['phone_length']
             df[PHONE].iloc[i] = ""
 

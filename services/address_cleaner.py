@@ -10,7 +10,7 @@ def address_type_cleaner(df):
     Notes:
         Run before doing any other work on addresses. Make sure store_cleaner has been run.
     """
-    address_types = [*map(lambda x: x.lower(), data[ADDRESS_TYPE])]
+    address_types = [*map(lambda x: x.lower(), df[ADDRESS_TYPE])]
 
     # # Iterate over input address type list and populate empty list with clean values ...
     for i, row in df.iterrows():
@@ -33,11 +33,11 @@ def address_cleaner(df):
             df[ALERT].iloc[i] = str(row[ALERT]) + ALERT_TYPE['address_1_missing']
 
         # If Address 1 exceeds the character limit then note an alert and remove the value...
-        if len(str(row[ADDRESS_1])) > LIMITS['address_1']:
+        if len(str(row[ADDRESS_1])) > LIMITS[ADDRESS_1]:
             df[ERROR].iloc[i] = str(row[ERROR]) + f"{row[ADDRESS_1]}" + ERROR_TYPE['address_1_length']
 
         # If Address 1 exceeds the character limit then note an alert and remove the value...
-        if len(str(row[ADDRESS_2])) > LIMITS['address_2']:
+        if len(str(row[ADDRESS_2])) > LIMITS[ADDRESS_2]:
             df[ERROR].iloc[i] = str(row[ERROR]) + f"{row[ADDRESS_2]}" + ERROR_TYPE['address_2_length']
 
     return df
@@ -57,7 +57,7 @@ def address_code_cleaner(df):
         df[ERROR].iloc[index] = str(df[ERROR].iloc[index]) + ERROR_TYPE['address_code_error']
 
         # If address code exceeds the character limit then note an error...
-        if len(df[ADDRESS_CODE].iloc[i]) > LIMITS['address_code']:
+        if len(df[ADDRESS_CODE].iloc[i]) > LIMITS[ADDRESS_CODE]:
             df[ERROR].iloc[i] = str(df[ERROR].iloc[i]) + ERROR_TYPE['address_code_length']
 
     return df

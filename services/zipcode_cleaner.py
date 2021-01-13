@@ -15,7 +15,7 @@ def zipcode_cleaner(df):
             df[ERROR].iloc[i] = str(row[ERROR]) + ERROR_TYPE['zip_error']
 
         # If zipcode exceeds character limit then note an alert and remove the value...
-        if len(str(row[ZIP])) > LIMITS['zip']:
+        if len(str(row[ZIP])) > LIMITS[ZIP]:
             df[ALERT].iloc[i] = str(row[ALERT]) + f"{row[ZIP]}" + ALERT_TYPE['zip_length']
             df[ZIP].iloc[i] = ""
 

@@ -11,7 +11,7 @@ def city_cleaner(df):
             df[ERROR].iloc[i] = str(row[ERROR]) + ERROR_TYPE['city_error']
 
         # If city length exceeds character limit note an alert and remove the value...
-        if len(str(row[CITY])) > LIMITS['city']:
+        if len(str(row[CITY])) > LIMITS[CITY]:
             df[ALERT].iloc[i] = str(row[ALERT]) + f"{row[CITY]}" + ALERT_TYPE['city_length']
             df[CITY].iloc[i] = ""
 

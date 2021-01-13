@@ -27,7 +27,7 @@ def state_cleaner(df):
                 df[ERROR].iloc[i] = str(row[ERROR]) + f"{reference_state}: " + ERROR_TYPE['state_error']
 
         # If length exceeds the limit note an alert and remove the value...
-        if len(str(row[STATE])) > LIMITS['state']:
+        if len(str(row[STATE])) > LIMITS[STATE]:
             df[ALERT].iloc[i] = str(row[ALERT]) + f"{row[STATE]}" + ALERT_TYPE['state_length']
             df[STATE].iloc[i] = ""
 

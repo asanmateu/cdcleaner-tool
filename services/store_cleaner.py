@@ -18,7 +18,7 @@ def store_cleaner(df):
             df[ERROR].iloc[i] = str(row[ERROR]) + ERROR_TYPE['store_error']
 
         # If length exceeds the limit note an alert and remove value...
-        if len(str(row[STORE_NAME])) > LIMITS['store_name']:
+        if len(str(row[STORE_NAME])) > LIMITS[STORE_NAME]:
             df[ALERT].iloc[i] = str(row[ALERT]) + f"{row[STORE_NAME]}" + ALERT_TYPE['store_length']
             df[STORE_NAME].iloc[i] = ""
 

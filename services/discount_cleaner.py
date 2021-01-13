@@ -10,7 +10,7 @@ def discount_cleaner(df):
             df[DISCOUNT].iloc[i] = df[DISCOUNT].iloc[i].strip('%')
 
         # If length exceeds limit note an alert and remove the value...
-        if len(str(row[DISCOUNT])) > LIMITS['discount']:
+        if len(str(row[DISCOUNT])) > LIMITS[DISCOUNT]:
             df[ALERT].iloc[i] = str(row[ALERT]) + f"{row[DISCOUNT]}" + ALERT_TYPE['discount_length']
             df[DISCOUNT].iloc[i] = ""
 
