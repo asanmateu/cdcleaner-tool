@@ -15,10 +15,10 @@
       <sourceFolder url="file://$MODULE_DIR$/google-sheets/reporting" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/utils" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/generate" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/env" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/conda" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/dictionaries" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.8 (cdcleaner-project)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.8" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PyDocumentationSettings">
