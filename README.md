@@ -6,7 +6,7 @@ The script features a range of functions with different functionality that clean
 
 
 
-## Installation  🛠  
+## 🛠  Installation    
 
 1. Request your credential to access **prod_ro** to management.
 
@@ -42,7 +42,7 @@ $ pip install .
 ```
 
 
-## Instructions  🧹  
+## 🧹  Instructions   
 
 1. Deposit customer list data into the template found in **files/input** directory. **DO NOT CHANGE ITS NAME NOR COLUMN NAMES**.
 
