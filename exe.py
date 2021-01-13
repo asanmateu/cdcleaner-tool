@@ -1,15 +1,11 @@
 from pipeline import pipeline_master
-from paths import OUTPUT_PATH
-from library import os
-
-
-# Validate environment variables input to check if their type and if any is null...
+from constants import OUTPUT_PATH
 
 
 print('\n Cleaning customer list...')
 
 
-# Run pipeline master function...
+# Run pipeline master function to clean file and output results file...
 pipeline_master()
 
 
