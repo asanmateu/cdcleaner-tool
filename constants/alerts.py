@@ -1,5 +1,3 @@
-from constants import LIMITS
-
 # Alerts do not generate an omit but point out a possible error //////
 ALERT_TYPE = {
 
@@ -48,19 +46,18 @@ ALERT_TYPE = {
 
 
     # LENGTH ALERTS ////
-    "customer_code_length": f": Customer code exceeds {LIMITS['customer_code']} characters. /",
-    "alias_length": f": Customer alias exceeds {LIMITS['customer_name']} characters. Value removed. /",
-    "address_code_length": f": Address code exceeds {LIMITS['address_code']} characters. Value removed. /",
-    "address_1_length": f": Address 1 exceeds {LIMITS['address_1']} characters. Value removed. /",
-    "address_2_length": f": Address 2 exceeds {LIMITS['address_2']} characters. Value removed. /",
-    "store_name_length": f": Store name exceeds {LIMITS['store_name']} characters. Value removed. /",
-    "address1_length": f": Address 1 exceeds {LIMITS['address_1']} characters. Value removed. /",
-    "city_length": f": City exceeds {LIMITS['city']} characters. Value removed. /",
-    "state_length": f": State exceeds {LIMITS['state']} characters. Value removed. /",
-    "zip_length": f": Zipcode exceeds {LIMITS['zip']} characters. Value removed. Value removed. /",
-    "phone_length": f":Phone exceeds {LIMITS['phone']} characters. Value removed. /",
-    "buyer_name_length": f": Buyer name exceeds {LIMITS['buyer_name']} characters. Value removed. /",
-    "email_length": f": Email exceeds {LIMITS['email']} characters. Value removed. /",
-    "discount_length": f": Discount exceeds {LIMITS['discount']} characters. Value removed. /"
+    "customer_code_length": f": Customer code exceeds 100 characters. /",
+    "alias_length": f": Customer alias exceeds 150 characters. Value removed. /",
+    "address_code_length": f": Address code exceeds 100 characters. Value removed. /",
+    "address_1_length": f": Address 1 exceeds 100 characters. Value removed. /",
+    "address_2_length": f": Address 2 exceeds 100 characters. Value removed. /",
+    "store_name_length": f": Store name exceeds 255 characters. Value removed. /",
+    "city_length": f": City exceeds 150 characters. Value removed. /",
+    "state_length": f": State exceeds 40 characters. Value removed. /",
+    "zip_length": f": Zipcode exceeds 20 characters. Value removed. Value removed. /",
+    "phone_length": f":Phone exceeds 30 characters. Value removed. /",
+    "buyer_name_length": f": Buyer name exceeds 200 characters. Value removed. /",
+    "email_length": f": Email exceeds 200 characters. Value removed. /",
+    "discount_length": f": Discount exceeds 3 characters. Value removed. /"
 
 }
