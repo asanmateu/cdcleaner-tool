@@ -12,6 +12,7 @@ def query_company_numbers(designer_id: int = DESIGNER_ID):
 
     # Extract company number data for specific designer id...
     company_number_data = query_read_only_prod(query)
+    company_number_data = pd.DataFrame(company_number_data, columns=['name', 'code'], dtype=str)
 
     # Set company number names and codes into separate lists
     company_number_names = strip_lst(list(company_number_data['name']))
@@ -29,6 +30,7 @@ def query_customer_groups(designer_id: int = DESIGNER_ID):
 
     # Extract df with designer's active customer groups...
     customer_groups = query_read_only_prod(query)
+    customer_groups = pd.DataFrame(customer_groups, columns=['customer_group_name', 'customer_group_code'], dtype=str)
 
     # Remove whitespaces...
     customer_groups = strip_df(customer_groups)
@@ -55,6 +57,7 @@ def query_price_types(designer_id: int = DESIGNER_ID):
 
     # Extract price type data from specific designer id...
     price_types = query_read_only_prod(query)
+    price_types = pd.DataFrame(price_types, columns=['wholesale_currency', 'price_label', 'retail_currency'], dtype=str)
 
     # Remove whitespaces...
     price_types = strip_df(price_types)
@@ -110,6 +113,7 @@ def query_payment_methods(designer_id: int = DESIGNER_ID):
 
     # Extract DataFrame with designer's active payment methods...
     payment_methods = query_read_only_prod(query)
+    payment_methods = pd.DataFrame(payment_methods, columns=['code', 'payment_name'], dtype=str)
 
     # Remove whitespaces...
     payment_methods = strip_df(payment_methods)
@@ -142,6 +146,7 @@ def query_shipping_methods(designer_id: int = DESIGNER_ID):
 
     # Extract DataFrame with designer's active payment methods...
     shipping_methods = query_read_only_prod(query)
+    shipping_methods = pd.DataFrame(shipping_methods, columns=['code', 'shipping_name'], dtype=str)
 
     # Remove whitespaces...
     shipping_methods = strip_df(shipping_methods)
