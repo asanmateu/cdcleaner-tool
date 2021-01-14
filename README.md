@@ -54,7 +54,7 @@ $ conda init zsh
 $ conda env create -f cdcleaner-conda-env.yml
 ```
 
-5. Activate conda environment from terminal (it will go back to **base** environment every time you reset terminal session). Check it works:
+5. Activate conda environment from your **personal terminal** (it will go back to **base** environment every time you reset terminal session). Check it works:
 
 ```
 $ conda activate cd-cleaner-conda-env
