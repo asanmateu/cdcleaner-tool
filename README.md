@@ -4,6 +4,8 @@ The purpose of this script is to speed up the process of cleaning manual custome
 
 The script features a range of functions with different functionality that clean each of the template columns.
 
+This package runs with a conda environment to benefit from conda's dependency management functionality.
+
 
 ## 1. Version 1.0.0 🚧
 
