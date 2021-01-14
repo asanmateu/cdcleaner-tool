@@ -22,7 +22,7 @@ This version does:
 4. These flags will make obvious if values have been removed to default or where the key errors are.
 
 
-## 2. What this version does NOT DO ❌
+## 2. What this version does NOT DO ⚠️ 
 
 - Clean discount fields.
 - Bad data must be spot intuitively (unfortunately).
