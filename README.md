@@ -9,7 +9,7 @@ This package runs with a conda environment to benefit from conda's dependency ma
 
 ## 1. Version 1.0.0 🚧
 
-This version does:
+### 1.1. What this version does ✅
 
 1. Cleans every filed of the customer list data except the Discount related fields. **Please review this beforehand**.
 
@@ -24,7 +24,7 @@ This version does:
 4. These flags will make obvious if values have been removed to default or where the key errors are.
 
 
-## 2. What this version does NOT DO ⚠️ 
+### 1.2. What this version does NOT DO ⚠️ 
 
 - Clean discount fields.
 - **Bad data must be spot intuitively (unfortunately).**
