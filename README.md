@@ -5,7 +5,7 @@ The purpose of this script is to speed up the process of cleaning manual custome
 The script features a range of functions with different functionality that clean each of the template columns.
 
 
-## 1. Version 1.0.0
+## 1. Version 1.0.0 🚧
 
 This version does:
 
