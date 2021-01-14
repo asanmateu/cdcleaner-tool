@@ -95,9 +95,9 @@ $ python3 exe.py
 5. You will need to enter:
 
   - DESIGNER ID
-  - SSH USERNAME: This should be the same as on Postico - e.g. tsanmateu
-  - SSH PASSWORD: Leave blank
-  - PROD USERNAME: You should have this from step 1
+  - SSH USERNAME: This should be the same as on Postico - e.g. tsanmateu.
+  - SSH PASSWORD: Leave blank.
+  - PROD USERNAME: You should have this from step 1.
   - PROD PASSWORD: You should have this on your 1password from step 1's request.
   
  
