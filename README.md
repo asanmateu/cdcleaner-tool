@@ -17,12 +17,14 @@ The script features a range of functions with different functionality that clean
 3. Open Anaconda Navigator and open **jupyter-lab > terminal** window. Then, run this command on the command line:
 ```
 # This is to make conda environments work on 'zsh' -> MAC OSX's terminal system.
+
 $ conda init zsh
 ```
 
 4. Create a new conda environment using environment export found in the tool's conda directory:
 ```
 # If this doesn't work try -f path/to/cdcleaner-conda-env.yml
+
 $ conda env create -f cdcleaner-conda-env.yml
 ```
 
@@ -38,6 +40,7 @@ This step is done everytime so that you can run the script on the tool's environ
 6. Make sure pip has installed the tool's python modules:
 ```
 # Include the dot
+
 $ pip install .
 ```
 
