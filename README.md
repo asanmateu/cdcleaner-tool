@@ -11,15 +11,15 @@ This package runs with a conda environment to benefit from conda's dependency ma
 
 This version does:
 
-1. Cleans every filed of the customer list data except the Discount related fields. Please review this beforehand.
+1. Cleans every filed of the customer list data except the Discount related fields. **Please review this beforehand**.
 
 2. Includes address codes validation process, however, for it to work data needs to be in a decent status, including address types, and either customer codes or customer names that are unique for the connection.
 
-2. Returns a results.xlsx file with 3 new columns RESULT, ALERT, ERROR.
+2. Returns a **results.xlsx** file with 3 new columns **RESULT, ALERT, ERROR**.
 
-    * RESULT: Indicates whether the row is clean, values have been set to default, or denied.
-    * ALERT: Alerts contain recommendations and require taking note as this may include payment methods defaulted to none since these were not setup or price type defaulted to the first in the designer's order settings.
-    * ERROR: Fields that need to be fixed compulsory for analysts to process them.
+    * **RESULT**: Indicates whether the row is clean, values have been set to default, or denied.
+    * **ALERT**: Alerts contain recommendations and require taking note as this may include payment methods defaulted to none since these were not setup or price type defaulted to the first in the designer's order settings.
+    * **ERROR**: Fields that need to be fixed compulsory for analysts to process them.
 
 4. These flags will make obvious if values have been removed to default or where the key errors are.
 
@@ -27,7 +27,7 @@ This version does:
 ## 2. What this version does NOT DO ⚠️ 
 
 - Clean discount fields.
-- Bad data must be spot intuitively (unfortunately).
+- **Bad data must be spot intuitively (unfortunately).**
 - Check intention of bad data (i.e. multiple rows for a same retailer without customer code when brand only wanted multiple buyers)
 - Validate additional buyers. Analyst must concatenate them and drop them there. Additional emails will just be added to existing ones.
 
@@ -82,7 +82,7 @@ $ pip install .
 3. Deposit customer list data into the template found in **files/input** directory. **DO NOT CHANGE ITS NAME NOR COLUMN NAMES**.
 
 
-3. Open terminal and activate environment:
+3. Open terminal and **activate** environment:
 ```
 $ conda activate cd-cleaner-conda-env
 ```
@@ -112,7 +112,7 @@ $ python3 exe.py
 8. If you have many additional emails then use emails2query template and script to put them automatically into query format. Copy and paste into query template and drop the push request.
 
   
-9. Slack Toni Sanmateu or Gabrielle Haam if an error occurs.
+9. Slack **Toni Sanmateu** or **Gabrielle Haam** if an error occurs.
 
 
 ## 5. Updating CD Cleaner Tool 📡
