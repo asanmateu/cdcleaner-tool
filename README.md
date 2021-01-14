@@ -127,3 +127,17 @@ $ pip install .
 
 3. You should be able to use the script as usual. Check on the **version** section 1 to see what has changed.
 
+
+**Alternatively**, if you are familiar with version control:
+
+1. Link the tool package to this remote repository and pull the new version.
+
+
+2. Run:
+```
+# This installs all the updated internal modules into environment level
+
+$ pip install .
+```
+
+
