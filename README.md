@@ -22,7 +22,7 @@ This version does:
 4. These flags will make obvious if values have been removed to default or where the key errors are.
 
 
-## 2. What this version does NOT do
+## 2. What this version does NOT do ❌
 
 - Clean discount fields.
 - Bad data must be spot intuitively (unfortunately).
@@ -30,7 +30,7 @@ This version does:
 - Validate additional buyers. Analyst must concatenate them and drop them there. Additional emails will just be added to existing ones.
 
 
-## 🛠  3. Installation    
+##  3. Installation 🛠 
 
 1. Request your credential to access **prod_ro** to management.
 
@@ -69,7 +69,7 @@ $ pip install .
 ```
 
 
-## 🧹  4. Instructions   
+## 4. Instructions 🧹
 
 1. Start by checking and fixing Discount fields.
 
@@ -113,7 +113,7 @@ $ python3 exe.py
 9. Slack Toni Sanmateu or Gabrielle Haam if an error occurs.
 
 
-## 5. Updating CD Cleaner Tool
+## 5. Updating CD Cleaner Tool 📡
 
 1. Download the repository's zip file and remove the old one.
 
