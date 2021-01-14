@@ -26,10 +26,13 @@ This package runs with a conda environment to benefit from conda's dependency ma
 
 ### 1.2. What this version does NOT DO ⚠️ 
 
-- Clean discount fields.
-- **Bad data must be spot intuitively (unfortunately).**
-- Check intention of bad data (i.e. multiple rows for a same retailer without customer code when brand only wanted multiple buyers)
-- Validate additional buyers. Analyst must concatenate them and drop them there. Additional emails will just be added to existing ones.
+1. Clean discount fields.
+
+2. **Bad data must be spot intuitively (unfortunately).**
+
+3. Check intention of bad data (i.e. multiple rows for a same retailer without customer code when brand only wanted multiple buyers).
+
+4. Validate additional buyers. Analyst must concatenate them and drop them there. Additional emails will just be added to existing ones.
 
 
 ##  3. Installation 🛠 
