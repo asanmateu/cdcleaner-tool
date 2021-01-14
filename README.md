@@ -17,9 +17,9 @@ This version does:
 
 2. Returns a results.xlsx file with 3 new columns RESULT, ALERT, ERROR.
 
-- RESULT: Indicates whether the row is clean, values have been set to default, or denied.
-- ALERT: Alerts contain recommendations and require taking note as this may include payment methods defaulted to none since these were not setup or price type defaulted to the first in the designer's order settings.
-- ERROR: Fields that need to be fixed compulsory for analysts to process them.
+    * RESULT: Indicates whether the row is clean, values have been set to default, or denied.
+    * ALERT: Alerts contain recommendations and require taking note as this may include payment methods defaulted to none since these were not setup or price type defaulted to the first in the designer's order settings.
+    * ERROR: Fields that need to be fixed compulsory for analysts to process them.
 
 4. These flags will make obvious if values have been removed to default or where the key errors are.
 
