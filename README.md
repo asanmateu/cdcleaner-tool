@@ -25,8 +25,8 @@ This version does:
 ## 2. What this version does NOT do
 
 - Clean discount fields.
+- Bad data must be spot intuitively (unfortunately).
 - Check intention of bad data (i.e. multiple rows for a same retailer without customer code when brand only wanted multiple buyers)
-- Bad data must be spot intuitively and unfortunately
 - Validate additional buyers. Analyst must concatenate them and drop them there. Additional emails will just be added to existing ones.
 
 
