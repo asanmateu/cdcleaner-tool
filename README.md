@@ -1,4 +1,4 @@
-# ⚡️  CD Customer List Cleaner (version: 0.0.1) - JDT Tool ⚡️
+# ⚡️  CD Customer List Cleaner (version: 1.0.0) - JDT Tool ⚡️
 
 The purpose of this script is to speed up the process of cleaning manual customer data templates.
 
