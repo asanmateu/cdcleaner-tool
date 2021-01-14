@@ -5,6 +5,29 @@ The purpose of this script is to speed up the process of cleaning manual custome
 The script features a range of functions with different functionality that clean each of the template columns.
 
 
+## Version 1.0.0
+
+This version does:
+
+1. Cleans every filed of the customer list data except the Discount related fields. Please review this beforehand.
+
+2. Includes address codes validation process, however, for it to work data needs to be in a decent status, including address types, and either customer codes or customer names that are unique for the connection.
+
+2. Returns a results.xlsx file with 3 new columns RESULT, ALERT, ERROR.
+
+- RESULT: Indicates whether the row is clean, values have been set to default, or denied.
+- ALERT: Alerts contain recommendations and require taking note as this may include payment methods defaulted to none since these were not setup or price type defaulted to the first in the designer's order settings.
+- ERROR: Fields that need to be fixed compulsory for analysts to process them.
+
+3. These flags will make obvious if values have been removed to default or where the key errors are.
+
+
+## What this version does NOT do
+
+- Clean discount fields
+- Check intention of bad data (i.e. multiple rows for a same retailer without customer code that try to add only different buyers...)
+- Bad data must be spot intuitively and unfortunately
+
 
 ## 🛠  Installation    
 
@@ -74,8 +97,23 @@ $ python3 exe.py
 5. Let the script run, if there is no error, once it is finished it will direct you to check the files/output directory where the results file will be placed.
  
 
-For best practices, delete this file or take it out of the output folder to avoid confusing next time you use the tool.
-Otherwise, make sure you check the last time it was updated in case the tool threw an error and you were collecting an old results file.
+7. For best practices, delete this file or take it out of the output folder to avoid confusing next time you use the tool.Otherwise, make sure you check the last time it was updated in case the tool threw an error and you were collecting an old results file.
 
   
-6. Slack Toni Sanmateu or Gabrielle Haam if an error occurs.
+8. Slack Toni Sanmateu or Gabrielle Haam if an error occurs.
+
+
+## Updating CD Cleaner Tool
+
+1. Download the repository's zip file and remove the old one.
+
+2. Open terminal in the tool's conda environment and run:
+
+```
+# Include the dot
+
+$ pip install .
+```
+
+3. You should be able to use the script as usual. Check on the **version** section to see what has changed.
+
