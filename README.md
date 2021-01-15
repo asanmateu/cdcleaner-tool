@@ -118,7 +118,7 @@ $ python3 exe.py
 9. Slack **Toni Sanmateu** or **Gabrielle Haam** if an error occurs.
 
 
-## 5. Updating CD Cleaner Tool 📡
+## 5. Updating  📡
 
 1. Download the repository's zip file and remove the old one.
 
