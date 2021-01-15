@@ -39,6 +39,9 @@ This package runs with a conda environment to benefit from conda's dependency ma
 
 ##  3. Installation 🛠 
 
+**I am assuming you have Python3 installed, otherwise start there:** https://docs.python-guide.org/starting/install3/osx/
+
+
 1. Request your credential to access **prod_ro** to management.
 
 
