@@ -52,7 +52,7 @@ $ conda init zsh
 
 4. Create a new conda environment using environment export found in the tool's conda directory:
 ```
-# If this doesn't work try -f path/to/cdcleaner-conda-env.yml
+# If this doesn't work try -f path/to/cdcleaner-conda-env.yml OR try navigating to the directory where the file is.
 
 $ conda env create -f cdcleaner-conda-env.yml
 ```
