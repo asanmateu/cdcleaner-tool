@@ -34,6 +34,8 @@ This package runs with a conda environment to benefit from conda's dependency ma
 
 4. Validate additional buyers. Analyst must concatenate them and drop them there. Additional emails will just be added to existing ones.
 
+5. May fail when no price label provided and there are multiple prices say USD, EUR, JPY without label and the USD, EUR or any of them with label. In this case, go to settings and make sure there is at most 1 label without name.
+
 
 ##  3. Installation 🛠 
 
