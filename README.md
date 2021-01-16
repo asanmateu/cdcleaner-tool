@@ -30,7 +30,7 @@ This package runs with a conda environment to benefit from conda's dependency ma
 
 2. **Bad data must be spot intuitively (unfortunately).**
 
-3. Check intention of bad data (i.e. multiple rows for a same retailer without customer code when brand only wanted multiple buyers).
+3. Check intention of bad data (i.e. multiple rows for a same retailer without customer code nor address type when brand only wanted multiple buyers).
 
 4. Validate additional buyers. Analyst must concatenate them and drop them there. Additional emails will just be added to existing ones.
 
