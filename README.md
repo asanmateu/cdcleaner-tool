@@ -52,6 +52,7 @@ This package runs with a conda environment to benefit from conda's dependency ma
 ```
 # This is to make conda environments work on 'zsh' -> MAC OSX's terminal system.
 
+$ conda update conda
 $ conda init zsh
 ```
 
