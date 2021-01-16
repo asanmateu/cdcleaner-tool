@@ -13,7 +13,7 @@ This package runs with a conda environment to benefit from conda's dependency ma
 
 1. Cleans every filed of the customer list data except the Discount related fields. **Please review this beforehand**.
 
-2. Includes address codes validation process checking duplicate rows by store name, customer code, and address code, however, for it to work data needs to be in a decent status, including address types, and either customer codes or customer names that are unique for the connection.
+2. Includes address codes validation process checking duplicate rows by store name, customer code, address type, and address code, however, for it to work data needs to be in a decent status, including address types, and either customer codes or store names that are unique for the connection.
 
 2. Returns a **results.xlsx** file with 3 new columns **RESULT, ALERT, ERROR**.
 
@@ -30,7 +30,7 @@ This package runs with a conda environment to benefit from conda's dependency ma
 
 2. **Bad data must be spot intuitively (unfortunately).**
 
-3. Check intention of bad data (i.e. multiple rows for a same retailer without customer code nor address type when brand only wanted multiple buyers).
+3. Check intention of bad data (i.e. multiple rows for a same retailer without unique identifier: customer code, store names nor address type, when brand only wanted multiple buyers to be added - this may result as an address code error).
 
 4. Validate additional buyers. Analyst must concatenate them and drop them there. Additional emails will just be added to existing ones.
 
