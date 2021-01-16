@@ -13,7 +13,7 @@ This package runs with a conda environment to benefit from conda's dependency ma
 
 1. Cleans every filed of the customer list data except the Discount related fields. **Please review this beforehand**.
 
-2. Includes address codes validation process, however, for it to work data needs to be in a decent status, including address types, and either customer codes or customer names that are unique for the connection.
+2. Includes address codes validation process checking duplicate rows by store name, customer code, and address code, however, for it to work data needs to be in a decent status, including address types, and either customer codes or customer names that are unique for the connection.
 
 2. Returns a **results.xlsx** file with 3 new columns **RESULT, ALERT, ERROR**.
 
