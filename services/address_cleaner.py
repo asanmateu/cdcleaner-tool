@@ -36,7 +36,7 @@ def address_cleaner(df):
         if len(str(row[ADDRESS_1])) > LIMITS[ADDRESS_1]:
             df[ERROR].iloc[i] = str(row[ERROR]) + f"{row[ADDRESS_1]}" + ERROR_TYPE['address_1_length']
 
-        # If Address 1 exceeds the character limit then note an alert and remove the value...
+        # If Address 2 exceeds the character limit then note an alert and remove the value...
         if len(str(row[ADDRESS_2])) > LIMITS[ADDRESS_2]:
             df[ERROR].iloc[i] = str(row[ERROR]) + f"{row[ADDRESS_2]}" + ERROR_TYPE['address_2_length']
 
