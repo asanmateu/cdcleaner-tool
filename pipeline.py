@@ -1,5 +1,5 @@
 # Import necessary modules...
-from constants import DESIGNER_ID
+from constants import DESIGNER_ID, OUTPUT_PATH
 from generate import generate_dataframe, generate_output, generate_results
 from services import country_cleaner, state_cleaner, zipcode_cleaner, city_cleaner, store_cleaner, \
     email_cleaner, address_code_cleaner, address_cleaner, address_type_cleaner, discount_cleaner, \
@@ -16,7 +16,7 @@ def pipeline_master(designer_id: int = DESIGNER_ID):
     data = generate_dataframe()
 
     # Local validations...
-    print("Template successfully uploaded. Starting cleaning process: ")
+    print("\nTemplate successfully uploaded. Starting cleaning process:\n")
 
     print("Validating customer code column...")
     customer_code_cleaner(data)
@@ -43,11 +43,14 @@ def pipeline_master(designer_id: int = DESIGNER_ID):
     print("Validating discounts column (beta)...")
     discount_cleaner(data)
 
-    # Retrieve data from database...
-    print("\nRetrieving necessary data from prod: ")
+    print("\nPlease enter prod credentials:\n")
 
-    print("Retrieving sales reps...")
+    # Retrieve data from database...
     query_sales_reps(designer_id)
+    # Prints are below to allow credential request first
+    print("\nRetrieving necessary data from prod: ")
+    print("\nRetrieving sales reps...")
+
     print("Retrieving payment methods...")
     query_payment_methods(designer_id)
     print("Retrieving shipping methods...")
@@ -62,7 +65,7 @@ def pipeline_master(designer_id: int = DESIGNER_ID):
     # Validation with db data...
     print("\nCleaning prod columns: ")
 
-    print("Validating sales reps...")
+    print("\nValidating sales reps...")
     sales_rep_cleaner(data, designer_id)
     print("Validating payment methods...")
     payment_methods_cleaner(data, designer_id)
@@ -80,7 +83,9 @@ def pipeline_master(designer_id: int = DESIGNER_ID):
     generate_results(data)
 
     # Generate output files...
-    print("\nGenerating ready file...")
+    print("Generating ready file...")
     generate_output(data)
+
+    print('\nThe file has been successfully cleaned, check output directory:\n' + OUTPUT_PATH + "\n")
 
     return None

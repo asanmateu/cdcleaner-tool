@@ -57,7 +57,8 @@ def query_price_types(designer_id: int = DESIGNER_ID):
 
     # Extract price type data from specific designer id...
     price_types = query_read_only_prod(query)
-    price_types = pd.DataFrame(price_types, columns=['wholesale_currency', 'price_label', 'retail_currency'], dtype=str)
+    price_types = pd.DataFrame(price_types, columns=['wholesale_currency', 'price_label', 'retail_currency', 'created'],
+                               dtype=str)
 
     # Remove whitespaces...
     price_types = strip_df(price_types)

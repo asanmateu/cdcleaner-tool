@@ -1,2 +1,2 @@
 # Request and save designer ID value...
-DESIGNER_ID = input("Designer ID: ")
+DESIGNER_ID = input("\nPlease enter Designer ID: ")
