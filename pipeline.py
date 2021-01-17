@@ -16,7 +16,7 @@ def pipeline_master(designer_id: int = DESIGNER_ID):
     data = generate_dataframe()
 
     # Local validations...
-    print("\nTemplate successfully uploaded. Starting cleaning process:\n")
+    print("\nTemplate successfully uploaded. Starting cleaning process:")
 
     print("Validating customer code column...")
     customer_code_cleaner(data)
@@ -43,13 +43,13 @@ def pipeline_master(designer_id: int = DESIGNER_ID):
     print("Validating discounts column (beta)...")
     discount_cleaner(data)
 
-    print("\nPlease enter prod credentials:\n")
+    print("\nPlease enter prod credentials:")
     get_credentials()
 
     # Retrieve data from database...
     print("\nRetrieving necessary data from prod: ")
 
-    print("\nRetrieving sales reps...")
+    print("Retrieving sales reps...")
     query_sales_reps(designer_id)
 
     print("Retrieving payment methods...")
@@ -66,7 +66,7 @@ def pipeline_master(designer_id: int = DESIGNER_ID):
     # Validation with db data...
     print("\nCleaning prod columns: ")
 
-    print("\nValidating sales reps...")
+    print("Validating sales reps...")
     sales_rep_cleaner(data, designer_id)
     print("Validating payment methods...")
     payment_methods_cleaner(data, designer_id)
