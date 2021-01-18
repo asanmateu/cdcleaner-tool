@@ -1,4 +1,4 @@
-# CD Customer List Cleaner (v1.0.0)  ⚡️
+# CD Customer List Cleaner (v1.0.0)
 
 The purpose of this script is to speed up the process of cleaning manual customer data templates.
 
