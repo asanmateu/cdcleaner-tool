@@ -98,11 +98,11 @@ $ pip install .
 $ conda activate cd-cleaner-conda-env
 ```
 
-4. Navigate to tool directory and run **exe.py**:
+4. Navigate to tool directory and run **pipeline.py**:
 ```
 $ cd ~/desktop/joor-cd-cleaner
 
-$ python3 exe.py
+$ python3 pipeline.py
 ```
 
 5. You will need to enter:
