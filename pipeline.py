@@ -1,5 +1,5 @@
 # Import necessary modules...
-from constants import DESIGNER_ID, OUTPUT_PATH
+from constants import DESIGNER_ID, OUTPUT_PATH, sys
 from generate import generate_dataframe, generate_output, generate_results
 from services import country_cleaner, state_cleaner, zipcode_cleaner, city_cleaner, store_cleaner, \
     email_cleaner, address_code_cleaner, address_cleaner, address_type_cleaner, discount_cleaner, \
@@ -9,7 +9,7 @@ from prod import query_sales_reps, query_payment_methods, query_shipping_methods
     query_customer_groups, query_company_numbers, get_credentials, clear_credentials
 
 
-def pipeline_master(designer_id: int = DESIGNER_ID):
+def pipeline(designer_id: int = DESIGNER_ID):
     """Call to each of the cleaning functions in the right order and return nothing"""
 
     # Generate DataFrame...
@@ -93,3 +93,8 @@ def pipeline_master(designer_id: int = DESIGNER_ID):
     clear_credentials()
 
     return None
+
+
+if __name__ == "__main__":
+    pipeline()
+    sys.exit()
