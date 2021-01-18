@@ -1,4 +1,4 @@
-# CD Customer List Cleaner (v1.0.0)  ⚡️
+# CD Customer List Cleaner (v1.0.0)
 
 The purpose of this script is to speed up the process of cleaning manual customer data templates.
 
@@ -58,7 +58,9 @@ $ conda init zsh
 
 4. Create a new conda environment using environment export found in the tool's conda directory:
 ```
-# If this doesn't work try -f path/to/cdcleaner-conda-env.yml OR try navigating to the directory where the file is.
+# Navigate to conda directory in the tool's package and create the environment with the .yml file
+
+$ cd ~/desktop/joor-cd-cleaner/conda
 
 $ conda env create -f cdcleaner-conda-env.yml
 ```
