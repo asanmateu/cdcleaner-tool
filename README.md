@@ -4,7 +4,7 @@ The purpose of this script is to speed up the process of cleaning manual custome
 
 The script features a range of functions with different functionality that clean each of the template columns.
 
-This package runs with a conda environment to benefit from conda's dependency management functionality.
+Pre-dockerised version: This package runs with a conda environment to benefit from conda's dependency management functionality.
 
 
 ## 1. Version 1.0.0 🚧
@@ -96,26 +96,15 @@ $ cd ~/desktop/joor-cd-cleaner
 
 $ python3 exe.py
 ```
-
-5. You will need to enter:
-
-      * DESIGNER ID
-      * SSH USERNAME: This should be the same as on Postico - e.g. tsanmateu.
-      * SSH PASSWORD: Leave blank.
-      * PROD USERNAME: You should have this from step 1.
-      * PROD PASSWORD: You should have this on your 1password from step 1's request.
-  
  
-6. Let the script run, if there is no error, once it is finished it will direct you to check the files/output directory where the results file will be placed.
+5. Let the script run, if there is no error, once it is finished it will direct you to check the files/output directory where the results file will be placed.
 
 
-7. For best practices, delete this file or take it out of the output folder to avoid confusing next time you use the tool.Otherwise, make sure you check the last time it was updated in case the tool threw an error and you were collecting an old results file.
+6. For best practices, delete this file or take it out of the output folder to avoid confusing next time you use the tool.Otherwise, make sure you check the last time it was updated in case the tool threw an error and you were collecting an old results file.
 
 
-8. If you have many additional emails then use emails2query template and script to put them automatically into query format. Copy and paste into query template and drop the push request.
+7. If you have many additional emails then use emails2query template and script to put them automatically into query format. Copy and paste into query template and drop the push request.
 
-  
-9. Slack **Toni Sanmateu** or **Gabrielle Haam** if an error occurs.
 
 
 ## 5. Updating CD Cleaner Tool 📡
