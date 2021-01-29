@@ -90,11 +90,11 @@ $ pip install .
 $ conda activate cd-cleaner-conda-env
 ```
 
-4. Navigate to tool directory and run **exe.py**:
+4. Navigate to tool directory and run **pipeline.py**:
 ```
 $ cd ~/desktop/joor-cd-cleaner
 
-$ python3 exe.py
+$ python3 pipeline.py
 ```
  
 5. Let the script run, if there is no error, once it is finished it will direct you to check the files/output directory where the results file will be placed.
