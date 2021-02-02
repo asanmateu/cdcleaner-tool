@@ -7,7 +7,7 @@ def email_cleaner(df):
     """Check if there are multiple emails in the email cell and add the extra
     emails to the additional emails column"""
 
-    # Pattern to search email matches by...
+    # Match emails only
     regex = r"[a-zA-Z0-9_.+-]*@[a-zA-Z0-9-]+.[a-zA-Z.]*"
 
     # Iterate over the email column to clean those cells in which there is more than 1 email...
