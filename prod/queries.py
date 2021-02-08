@@ -8,7 +8,7 @@ def query_company_numbers(designer_id: int = DESIGNER_ID):
     """Takes designer id and retrieves active company number details for the desired
     designer ready for validation. """
 
-    query = f"select name, code from joor_web.company_numbers where account_id={designer_id} and deleted=false;"
+    query = f""
 
     # Extract company number data for specific designer id...
     company_number_data = query_read_only_prod(query)
@@ -25,8 +25,7 @@ def query_customer_groups(designer_id: int = DESIGNER_ID):
     """Takes designer id and retrieves active customer group name and code details for the desired
     designer ready for validation. """
 
-    query = f"select customer_group_name, customer_group_code from joor_web.customer_groups " \
-            f"where account_id = {designer_id} and deleted = FALSE;"
+    query = f""
 
     # Extract df with designer's active customer groups...
     customer_groups = query_read_only_prod(query)
@@ -50,10 +49,7 @@ def query_price_types(designer_id: int = DESIGNER_ID):
         pandas DataFrame with desired columns.
 
     """
-    query = f"select c.code as wholesale_currency, pt.name as price_label, cx.code as retail_currency, pt.created " \
-            f"from joor_web.price_types pt join joor_web.currencies c on c.id = pt.currency_id " \
-            f"join joor_web.currencies cx on cx.id = pt.retail_currency_id " \
-            f"where pt.designer_id = {designer_id};"
+    query = f""
 
     # Extract price type data from specific designer id...
     price_types = query_read_only_prod(query)
@@ -83,7 +79,7 @@ def query_sales_reps(designer_id: int = DESIGNER_ID):
         pandas DataFrame with desired columns.
     """
     # Query with f-string to insert designer id and close as string...
-    query = f"select id, code, display_name from joor_web.accounts_users where account_id = {designer_id};"
+    query = f""
     sales_reps = query_read_only_prod(query)
 
     # Solve NoneType object can't be trimmed bug making the extract a dataframe with object columns...
@@ -107,9 +103,7 @@ def query_payment_methods(designer_id: int = DESIGNER_ID):
         pandas DataFrame with desired columns.
 
    """
-    query = f'select dpm.code, pm.payment_name from joor_web.designer_payment_methods dpm join' \
-            f' joor_web.payment_methods pm on pm.id = dpm.payment_method_id where ' \
-            f'dpm.designer_id = {designer_id} and dpm.deleted = 0;'
+    query = f''
 
     # Extract DataFrame with designer's active payment methods...
     payment_methods = query_read_only_prod(query)
@@ -140,9 +134,7 @@ def query_shipping_methods(designer_id: int = DESIGNER_ID):
 
    """
 
-    query = f"select dsm.code, sm.shipping_name from joor_web.designer_shipping_methods dsm " \
-            f"join joor_web.shipping_methods sm on sm.id = dsm.shipping_method_id where " \
-            f"dsm.designer_id = {designer_id} and dsm.deleted = 0;"
+    query = f""
 
     # Extract DataFrame with designer's active payment methods...
     shipping_methods = query_read_only_prod(query)
