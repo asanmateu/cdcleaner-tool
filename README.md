@@ -7,7 +7,7 @@ The script features a range of functions with different functionality that clean
 **Pre-dockerised version:** This package runs with a conda environment to benefit from conda's dependency management functionality.
 
 
-## 1. Version 1.0.0 🚧
+## 1. Version 1.0.0 
 
 ### 1.1. What this version does ✅
 
